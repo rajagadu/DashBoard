@@ -1,0 +1,405 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="EmployeesEO_VIEW"
+  Version="12.2.1.0.31"
+  InheritPersonalization="merge"
+  SelectListFlags="1"
+  FromListFlags="1"
+  WhereFlags="1"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  SelectAllAttributes="false"
+  PageIterMode="Full"
+  RowClass="com.silbury.model.evo.EmployeesEO_VIEWRowImpl"
+  ComponentClass="com.silbury.model.evo.EmployeesEO_VIEWImpl"
+  ComponentInterface="com.silbury.model.evo.common.EmployeesEO_VIEW"
+  ClientProxyName="com.silbury.model.evo.client.EmployeesEO_VIEWClient">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Coll|VarAccess"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <ViewAccessor
+    Name="EmployeesEO_VIEW1"
+    ViewObjectName="com.silbury.model.evo.EmployeesEO_VIEW"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="DepartmentsView1"
+    ViewObjectName="com.silbury.model.evo.DepartmentsView"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="JobsView1"
+    ViewObjectName="com.silbury.model.evo.JobsView"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="Department_LOV1"
+    ViewObjectName="com.silbury.model.evo.Department_LOV"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="Manager_LOV1"
+    ViewObjectName="com.silbury.model.evo.Manager_LOV"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="ManagerListVO1"
+    ViewObjectName="com.silbury.model.evo.ManagerListVO"
+    RowLevelBinds="true"/>
+  <ListBinding
+    Name="LOV_DepartmentId"
+    ListVOName="Department_LOV1"
+    ListRangeSize="-1"
+    NullValueFlag="none"
+    MRUCount="0"
+    ComboRowCountHint="10">
+    <AttrArray Name="AttrNames">
+      <Item Value="DepartmentId"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="DepartmentId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="DepartmentId"/>
+      <Item Value="DepartmentName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_JobId"
+    ListVOName="JobsView1"
+    ListRangeSize="-1"
+    NullValueFlag="none"
+    MRUCount="0"
+    ComboRowCountHint="10">
+    <AttrArray Name="AttrNames">
+      <Item Value="JobId"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="JobId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="JobTitle"/>
+      <Item Value="JobId"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_ManagerFirstName"
+    ListVOName="ManagerListVO1"
+    ListRangeSize="-1"
+    NullValueFlag="none"
+    MRUCount="0"
+    ComboRowCountHint="10">
+    <AttrArray Name="AttrNames">
+      <Item Value="ManagerFirstName"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="ManagerId"/>
+      <Item Value="ManagerLastName"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="FirstName"/>
+      <Item Value="EmployeeId"/>
+      <Item Value="LastName"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="FirstName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_DepartmentName"
+    ListVOName="DepartmentsView1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="DepartmentName"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="DepartmentId"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="DepartmentName"/>
+      <Item Value="DepartmentId"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_JobTitle"
+    ListVOName="JobsView1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="JobTitle"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="JobId"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="JobTitle"/>
+      <Item Value="JobId"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <EntityUsage
+    Name="EmployeesENTITYOBJECT"
+    Entity="com.silbury.model.eo.EmployeesENTITYOBJECT"/>
+  <ViewAttribute
+    Name="EmployeeId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="EmployeeId"
+    EntityUsage="EmployeesENTITYOBJECT"
+    AliasName="EMPLOYEE_ID"
+    IsUpdateable="false">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="EmployeeId_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="FirstName"
+    PrecisionRule="true"
+    EntityAttrName="FirstName"
+    EntityUsage="EmployeesENTITYOBJECT"
+    AliasName="FIRST_NAME">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="com.silbury.model.evo.EmployeesEO_VIEW.FirstName_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="LastName"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="LastName"
+    EntityUsage="EmployeesENTITYOBJECT"
+    AliasName="LAST_NAME">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="LastName_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Email"
+    IsUnique="true"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Email"
+    EntityUsage="EmployeesENTITYOBJECT"
+    AliasName="EMAIL">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="Email_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="PhoneNumber"
+    PrecisionRule="true"
+    EntityAttrName="PhoneNumber"
+    EntityUsage="EmployeesENTITYOBJECT"
+    AliasName="PHONE_NUMBER">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="PhoneNumber_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="HireDate"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="HireDate"
+    EntityUsage="EmployeesENTITYOBJECT"
+    AliasName="HIRE_DATE">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="HireDate_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="JobId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="JobId"
+    EntityUsage="EmployeesENTITYOBJECT"
+    AliasName="JOB_ID"
+    LOVName="LOV_JobId">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+        <LABEL
+          ResId="JobId_LABEL"/>
+        <AUTOSUBMIT
+          Value="true"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Salary"
+    PrecisionRule="true"
+    EntityAttrName="Salary"
+    EntityUsage="EmployeesENTITYOBJECT"
+    AliasName="SALARY">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="Salary_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CommissionPct"
+    PrecisionRule="true"
+    EntityAttrName="CommissionPct"
+    EntityUsage="EmployeesENTITYOBJECT"
+    AliasName="COMMISSION_PCT">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="CommissionPct_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ManagerId"
+    PrecisionRule="true"
+    EntityAttrName="ManagerId"
+    EntityUsage="EmployeesENTITYOBJECT"
+    AliasName="MANAGER_ID">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="ManagerId_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="DepartmentId"
+    PrecisionRule="true"
+    EntityAttrName="DepartmentId"
+    EntityUsage="EmployeesENTITYOBJECT"
+    AliasName="DEPARTMENT_ID"
+    LOVName="LOV_DepartmentId">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="DepartmentId_LABEL"/>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="JobTitle"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="255"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR"
+    LOVName="LOV_JobTitle">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="DepartmentName"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="255"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR"
+    LOVName="LOV_DepartmentName">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ManagerFirstName"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="255"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR"
+    LOVName="LOV_ManagerFirstName">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ManagerLastName"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="255"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR"/>
+  <ViewLinkAccessor
+    Name="EmployeesEO_VIEW"
+    ViewLink="com.silbury.model.evo.EmpManagerFkLink1"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="EmpValuesInserEOView"
+    ViewLink="com.silbury.model.evo.EmpManagerFkAssoc10Link"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ClientInterface
+    Name="__clientInterface">
+    <Method
+      Name="CloneValue"
+      MethodName="CloneValue">
+      <Return
+        Name="_return_type_"
+        Type="java.util.ArrayList"/>
+      <Parameter
+        Name="empid"
+        Type="java.lang.String"/>
+    </Method>
+  </ClientInterface>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="com.silbury.model.ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

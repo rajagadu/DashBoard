@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="DepartmentDetailsVO"
+  Version="12.2.1.0.31"
+  InheritPersonalization="merge"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  PageIterMode="Full"
+  SelectList="Employees.EMPLOYEE_ID, 
+       Employees.DEPARTMENT_ID, 
+       Employees.DEPARTMENT_ID AS DEPARTMENT_ID1, 
+       Employees.FIRST_NAME, 
+       Employees.LAST_NAME, 
+       Employees.SALARY"
+  FromList="EMPLOYEES Employees">
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="com.silbury.model.vo.DepartmentDetailsVO_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <EntityUsage
+    Name="Employees"
+    Entity="com.silbury.model.eo.Employees"/>
+  <ViewAttribute
+    Name="EmployeeId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="EmployeeId"
+    EntityUsage="Employees"
+    AliasName="EMPLOYEE_ID"/>
+  <ViewAttribute
+    Name="DepartmentId"
+    PrecisionRule="true"
+    EntityAttrName="DepartmentId"
+    EntityUsage="Employees"
+    AliasName="DEPARTMENT_ID"/>
+  <ViewAttribute
+    Name="DepartmentId1"
+    PrecisionRule="true"
+    EntityAttrName="DepartmentId"
+    EntityUsage="Employees"
+    AliasName="DEPARTMENT_ID1"/>
+  <ViewAttribute
+    Name="FirstName"
+    PrecisionRule="true"
+    EntityAttrName="FirstName"
+    EntityUsage="Employees"
+    AliasName="FIRST_NAME"/>
+  <ViewAttribute
+    Name="LastName"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="LastName"
+    EntityUsage="Employees"
+    AliasName="LAST_NAME"/>
+  <ViewAttribute
+    Name="Salary"
+    PrecisionRule="true"
+    EntityAttrName="Salary"
+    EntityUsage="Employees"
+    AliasName="SALARY"/>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="com.silbury.model.ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

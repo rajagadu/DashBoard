@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewLink SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewLink
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="LocCIdFkLink"
+  Version="12.2.1.0.31"
+  InheritPersonalization="merge"
+  EntityAssociation="com.silbury.model.eo.LocCIdFkAssoc">
+  <ViewLinkDefEnd
+    Name="CountriesView"
+    Cardinality="1"
+    Source="true"
+    Owner="com.silbury.model.evo.CountriesView">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_finderName" Value="CountriesView"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.silbury.model.evo.CountriesView.CountryId"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ViewLinkDefEnd
+    Name="LocationsView"
+    Cardinality="-1"
+    Owner="com.silbury.model.evo.LocationsView">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_finderName" Value="LocationsView"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.silbury.model.evo.LocationsView.CountryId"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+</ViewLink>

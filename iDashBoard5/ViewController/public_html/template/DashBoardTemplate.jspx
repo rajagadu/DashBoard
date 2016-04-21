@@ -1,0 +1,118 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <af:pageTemplateDef var="attrs" definition="private">
+        <af:xmlContent>
+            <component xmlns="http://xmlns.oracle.com/adf/faces/rich/component">
+                <description/>
+                <display-name>DashBoardTemplate</display-name>
+                <facet>
+                    <facet-name>header</facet-name>
+                </facet>
+                <facet>
+                    <facet-name>status</facet-name>
+                </facet>
+                <facet>
+                    <facet-name>appNav</facet-name>
+                </facet>
+                <facet>
+                    <facet-name>globalLinks</facet-name>
+                </facet>
+                <facet>
+                    <facet-name>footer</facet-name>
+                </facet>
+                <facet>
+                    <facet-name>center</facet-name>
+                </facet>
+                <facet>
+                    <facet-name>start</facet-name>
+                </facet>
+                <facet>
+                    <facet-name>end</facet-name>
+                </facet>
+                <attribute>
+                    <attribute-name>logoImagePath</attribute-name>
+                    <attribute-class>java.lang.String</attribute-class>
+                </attribute>
+                <attribute>
+                    <attribute-name>logoSmallImagePath</attribute-name>
+                    <attribute-class>java.lang.String</attribute-class>
+                </attribute>
+                <attribute>
+                    <attribute-name>logoStyleClass</attribute-name>
+                    <attribute-class>java.lang.String</attribute-class>
+                </attribute>
+                <attribute>
+                    <attribute-name>logoShortDesc</attribute-name>
+                    <attribute-class>java.lang.String</attribute-class>
+                </attribute>
+                <attribute>
+                    <attribute-name>showAppNavbar</attribute-name>
+                    <attribute-class>boolean</attribute-class>
+                    <default-value>true</default-value>
+                </attribute>
+                <attribute>
+                    <attribute-name>brandingMaxWidth</attribute-name>
+                    <attribute-class>java.lang.String</attribute-class>
+                    <default-value>1024px</default-value>
+                </attribute>
+                <attribute>
+                    <attribute-name>minWidth</attribute-name>
+                    <attribute-class>java.lang.String</attribute-class>
+                </attribute>
+                <attribute>
+                    <attribute-name>startWidth</attribute-name>
+                    <attribute-class>java.lang.String</attribute-class>
+                    <default-value>170px</default-value>
+                </attribute>
+                <attribute>
+                    <attribute-name>endWidth</attribute-name>
+                    <attribute-class>java.lang.String</attribute-class>
+                    <default-value>170px</default-value>
+                </attribute>
+                <attribute>
+                    <attribute-name>showFooter</attribute-name>
+                    <attribute-class>boolean</attribute-class>
+                </attribute>
+            </component>
+        </af:xmlContent>
+        <af:group id="grp1">
+            <af:resource type="css" source="/resources/css/dashBoardFirstTemplate.css"/>
+            <af:panelGroupLayout id="mainArea" styleClass="tablet-first-main-area" layout="vertical">
+                <af:declarativeComponent viewId="brandingBar.jsff" id="bBarFDC" logoImagePath="#{attrs.logoImagePath}"
+                                         logoSmallImagePath="#{attrs.logoSmallImagePath}"
+                                         logoStyleClass="#{attrs.logoStyleClass}" logoShortDesc="#{attrs.logoShortDesc}"
+                                         showAppNavbar="#{attrs.showAppNavbar}" showStatusIndicator="true"
+                                         brandingMaxWidth="#{attrs.brandingMaxWidth}">
+                    <f:facet name="brandingTitle">
+                        <af:facetRef facetName="header"/>
+                    </f:facet>
+                    <f:facet name="appNavbar">
+                        <af:facetRef facetName="appNav"/>
+                    </f:facet>
+                    <f:facet name="globalNavbar">
+                        <af:facetRef facetName="globalLinks"/>
+                    </f:facet>
+                    <f:facet name="statusBar">
+                        <af:facetRef facetName="status"/>
+                    </f:facet>
+                </af:declarativeComponent>
+                <af:declarativeComponent viewId="contentBody.jsff" id="cBodFDC" startWidth="#{attrs.startWidth}" endWidth="#{attrs.endWidth}" minWidth="#{attrs.minWidth}" 
+                                   brandingMaxWidth="#{attrs.brandingMaxWidth}">
+            <f:facet name="startFacet">
+              <af:facetRef facetName="start"/>
+            </f:facet>
+            <f:facet name="endFacet">
+              <af:facetRef facetName="end"/>
+            </f:facet>
+            <f:facet name="content">
+              <af:facetRef facetName="center"/>
+            </f:facet>
+          </af:declarativeComponent>
+              
+            </af:panelGroupLayout>
+
+        </af:group>
+    </af:pageTemplateDef>
+</jsp:root>

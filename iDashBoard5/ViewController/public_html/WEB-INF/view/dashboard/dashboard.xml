@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!--Copyright (c) 2014 Oracle and/or its affiliates. All rights reserved.-->
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="dashboard">
+    <default-activity>Dashboard</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+   <managed-bean id="__11">
+      <managed-bean-name>dashboard</managed-bean-name>
+      <managed-bean-class>com.silbury.view.dashboard.backing.DashboardBean</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+     
+    </managed-bean>
+  
+    <view id="Dashboard">
+      <page>/Views/Dashboard.jsff</page>
+    </view>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

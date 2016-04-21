@@ -1,0 +1,39 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<SDM>
+   <OverallProperties
+      id="OverallProperties1"/>
+   <TaskFlowReturn
+      id="TaskFlowReturn3">
+      <property
+         name="activityId">taskFlowReturn1</property>
+      <property
+         name="x">831.0</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>taskFlowReturn1&lt;/b>&lt;/p>&lt;p>Activity Type:  Task Flow Return&lt;/p>&lt;p>Outcome:  taskFlowReturn1&lt;/p></property>
+      <property
+         name="y">294.59766</property>
+      <property
+         name="finish">true</property>
+      <property
+         name="exceptionHandler">false</property>
+   </TaskFlowReturn>
+   <View
+      id="View5">
+      <property
+         name="activityId">sunburst</property>
+      <property
+         name="pageFragment">true</property>
+      <property
+         name="x">436.5</property>
+      <property
+         name="start">true</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>sunburst&lt;/b> (Default Activity)&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="y">257.44824</property>
+      <property
+         name="page">/Views/sunburst.jsff</property>
+      <property
+         name="exceptionHandler">false</property>
+   </View>
+</SDM>

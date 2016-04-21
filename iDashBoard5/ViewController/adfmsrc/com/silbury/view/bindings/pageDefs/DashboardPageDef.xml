@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--Copyright (c) 2014 Oracle and/or its affiliates. All rights reserved.-->
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.10.8" id="DashboardPageDef"
+                Package="com.silbury.view.bindings.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator id="DashBoardVO1Iterator" Binds="DashBoardVO1" DataControl="iDashBoardAmDataControl" RangeSize="25"/>
+    <iterator Binds="EmployeeVO" RangeSize="25" DataControl="iDashBoardAmDataControl" id="EmployeeVOIterator"/>
+    <iterator Binds="BubbleGraphVO1" RangeSize="-1" DataControl="iDashBoardAmDataControl" id="BubbleGraphVO1Iterator"/>
+    <iterator Binds="AssignedTasksVO1" RangeSize="25" DataControl="iDashBoardAmDataControl"
+              id="AssignedTasksVO1Iterator"/>
+    <iterator Binds="CreateTaskFormVO1" RangeSize="25" DataControl="iDashBoardAmDataControl"
+              id="CreateTaskFormVO1Iterator"/>
+    <iterator Binds="CompletedTaskVO1" RangeSize="25" DataControl="iDashBoardAmDataControl"
+              id="CompletedTaskVO1Iterator"/>
+    <iterator Binds="DepartVO" RangeSize="-1" DataControl="iDashBoardAmDataControl" id="DepartVOIterator"/>
+    <iterator Binds="RegionsView" RangeSize="-1" DataControl="iDashBoardAmDataControl" id="RegionsViewIterator"/>
+    <iterator Binds="DepartmentMastersVO1" RangeSize="-1" DataControl="iDashBoardAmDataControl"
+              id="DepartmentMastersVO1Iterator"/>
+  </executables>
+  <bindings>
+     <attributeValues IterBinding="DashBoardVO1Iterator" id="Notifyapproved">
+      <AttrNames>
+        <Item Value="Notifyapproved"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="DashBoardVO1Iterator" id="Notifywaiting">
+      <AttrNames>
+        <Item Value="Notifywaiting"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="DashBoardVO1Iterator" id="Notifyrejected">
+      <AttrNames>
+        <Item Value="Notifyrejected"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="DashBoardVO1Iterator" id="Firstname">
+      <AttrNames>
+        <Item Value="Firstname"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="EmployeeVOIterator" id="FirstName">
+      <AttrNames>
+        <Item Value="FirstName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="EmployeeVOIterator" id="LastName">
+      <AttrNames>
+        <Item Value="LastName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="EmployeeVOIterator" id="JobTitle">
+      <AttrNames>
+        <Item Value="JobTitle"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="EmployeeVOIterator" id="DepartmentName">
+      <AttrNames>
+        <Item Value="DepartmentName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="EmployeeVOIterator" id="PhoneNumber">
+      <AttrNames>
+        <Item Value="PhoneNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="EmployeeVOIterator" id="Email">
+      <AttrNames>
+        <Item Value="Email"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="EmployeeVOIterator" id="Linkedin">
+      <AttrNames>
+        <Item Value="Linkedin"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="EmployeeVOIterator" id="Twitter">
+      <AttrNames>
+        <Item Value="Twitter"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="EmployeeVOIterator" id="Facebook">
+      <AttrNames>
+        <Item Value="Facebook"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="EmployeeVOIterator" id="Google">
+      <AttrNames>
+        <Item Value="Google"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="EmployeeVOIterator" id="StreetAddress">
+      <AttrNames>
+        <Item Value="StreetAddress"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="EmployeeVOIterator" id="City">
+      <AttrNames>
+        <Item Value="City"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="EmployeeVOIterator" id="StateProvince">
+      <AttrNames>
+        <Item Value="StateProvince"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="EmployeeVOIterator" id="CountryName">
+      <AttrNames>
+        <Item Value="CountryName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="EmployeeVOIterator" id="PostalCode">
+      <AttrNames>
+        <Item Value="PostalCode"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="EmployeeVOIterator" id="Salary">
+      <AttrNames>
+        <Item Value="Salary"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="EmployeeVOIterator" id="HireDate">
+      <AttrNames>
+        <Item Value="HireDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="EmployeeVOIterator" id="MgrFirstNm">
+      <AttrNames>
+        <Item Value="MgrFirstNm"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="EmployeeVOIterator" id="MgrLastNm">
+      <AttrNames>
+        <Item Value="MgrLastNm"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="BubbleGraphVO1Iterator" id="BubbleGraphVO1" ChangeEventPolicy="ppr">
+      <nodeDefinition DefName="com.silbury.model.vo.BubbleGraphVO" Name="BubbleGraphVO1">
+        <AttrNames>
+          <Item Value="DepartmentId"/>
+          <Item Value="AvgSal"/>
+          <Item Value="CountEmp"/>
+          <Item Value="DepartmentName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="BubbleGraphVO1Iterator" id="BubbleGraphVO11" ChangeEventPolicy="ppr">
+      <nodeDefinition DefName="com.silbury.model.vo.BubbleGraphVO" Name="BubbleGraphVO11">
+        <AttrNames>
+          <Item Value="AvgSal"/>
+          <Item Value="DepartmentName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="DashBoardVO1Iterator" id="DashBoardVO1">
+      <nodeDefinition DefName="com.silbury.model.vo.DashBoardVO" Name="DashBoardVO10">
+        <AttrNames>
+          <Item Value="Notifyapproved"/>
+          <Item Value="Notifywaiting"/>
+          <Item Value="Notifyrejected"/>
+          <Item Value="Firstname"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="AssignedTasksVO1Iterator" id="AssignedTasksVO1">
+      <nodeDefinition DefName="com.silbury.model.vo.AssignedTasksVO" Name="AssignedTasksVO10">
+        <AttrNames>
+          <Item Value="Taskid"/>
+          <Item Value="Taskname"/>
+          <Item Value="Taskcreateddate"/>
+          <Item Value="Taskcreator"/>
+          <Item Value="Taskdesc"/>
+          <Item Value="Taskid1"/>
+          <Item Value="Taskstatus"/>
+          <Item Value="Taskworkflow"/>
+          <Item Value="Wfactiondate"/>
+          <Item Value="Wfcompletion"/>
+          <Item Value="Wflastaction"/>
+          <Item Value="Wflastactionstep"/>
+          <Item Value="Wfname"/>
+          <Item Value="Wfrejectreason"/>
+          <Item Value="Wfstep"/>
+          <Item Value="Wfuserinqueue"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="refreshWfWidget" RequiresUpdateModel="true" Action="invokeMethod" MethodName="refreshWfWidget"
+                  IsViewObjectMethod="false" DataControl="iDashBoardAmDataControl"
+                  InstanceName="data.iDashBoardAmDataControl.dataProvider"/>
+    <methodAction id="rejectWorkflow" RequiresUpdateModel="true" Action="invokeMethod" MethodName="rejectWorkflow"
+                  IsViewObjectMethod="false" DataControl="iDashBoardAmDataControl"
+                  InstanceName="data.iDashBoardAmDataControl.dataProvider"/>
+    <methodAction id="insertQuery" RequiresUpdateModel="true" Action="invokeMethod" MethodName="insertQuery"
+                  IsViewObjectMethod="false" DataControl="iDashBoardAmDataControl"
+                  InstanceName="data.iDashBoardAmDataControl.dataProvider">
+      <NamedData NDName="taskName" NDType="java.lang.String"/>
+    </methodAction>
+    <methodAction id="updateQuery" RequiresUpdateModel="true" Action="invokeMethod" MethodName="updateQuery"
+                  IsViewObjectMethod="false" DataControl="iDashBoardAmDataControl"
+                  InstanceName="data.iDashBoardAmDataControl.dataProvider">
+      <NamedData NDName="query" NDType="java.lang.String"/>
+    </methodAction>
+    <attributeValues IterBinding="CreateTaskFormVO1Iterator" id="Taskid">
+      <AttrNames>
+        <Item Value="Taskid"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CreateTaskFormVO1Iterator" id="Taskname">
+      <AttrNames>
+        <Item Value="Taskname"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CreateTaskFormVO1Iterator" id="Taskcreator">
+      <AttrNames>
+        <Item Value="Taskcreator"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CreateTaskFormVO1Iterator" id="Taskcreateddate">
+      <AttrNames>
+        <Item Value="Taskcreateddate"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="CompletedTaskVO1Iterator" id="CompletedTaskVO1">
+      <nodeDefinition DefName="com.silbury.model.vo.CompletedTaskVO" Name="CompletedTaskVO10">
+        <AttrNames>
+          <Item Value="Taskid"/>
+          <Item Value="Taskname"/>
+          <Item Value="Taskcreateddate"/>
+          <Item Value="Taskcreator"/>
+          <Item Value="Taskdesc"/>
+          <Item Value="Taskid1"/>
+          <Item Value="Taskstatus"/>
+          <Item Value="Taskworkflow"/>
+          <Item Value="Wfactiondate"/>
+          <Item Value="Wfcompletion"/>
+          <Item Value="Wflastaction"/>
+          <Item Value="Wflastactionstep"/>
+          <Item Value="Wfname"/>
+          <Item Value="Wfrejectreason"/>
+          <Item Value="Wfstep"/>
+          <Item Value="Wfuserinqueue"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <mapTheme IterBinding="DepartVOIterator" id="DepartVO" xmlns="http://xmlns.oracle.com/adfm/dvt">
+      <mapThemeDataMap convert="false" mapThemeType="point">
+        <data>
+          <item value="DepartmentName"/>
+        </data>
+        <item type="gen_form_2" street="StreetAddress" city="City" country="CountryName" postalCode="PostalCode"/>
+      </mapThemeDataMap>
+    </mapTheme>
+    <tree IterBinding="RegionsViewIterator" id="RegionsView">
+      <nodeDefinition DefName="com.silbury.model.evo.RegionsView" Name="RegionsView0">
+        <AttrNames>
+          <Item Value="RegionId"/>
+          <Item Value="RegionName"/>
+        </AttrNames>
+        <Accessors>
+          <Item Value="CountriesView"/>
+        </Accessors>
+      </nodeDefinition>
+      <nodeDefinition DefName="com.silbury.model.evo.CountriesView" Name="RegionsView1">
+        <AttrNames>
+          <Item Value="RegionId"/>
+          <Item Value="CountryName"/>
+        </AttrNames>
+        <Accessors>
+          <Item Value="LocationsView"/>
+        </Accessors>
+      </nodeDefinition>
+      <nodeDefinition DefName="com.silbury.model.evo.LocationsView" Name="RegionsView2">
+        <AttrNames>
+          <Item Value="LocationId"/>
+          <Item Value="City"/>
+        </AttrNames>
+        <Accessors>
+          <Item Value="DepartmentsView"/>
+        </Accessors>
+      </nodeDefinition>
+      <nodeDefinition DefName="com.silbury.model.evo.DepartmentsView" Name="RegionsView3">
+        <AttrNames>
+          <Item Value="DepartmentId"/>
+          <Item Value="DepartmentName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="DepartmentMastersVO1Iterator" id="DepartmentMastersVO1">
+      <nodeDefinition DefName="com.silbury.model.vo.DepartmentMastersVO" Name="DepartmentMastersVO10">
+        <AttrNames>
+          <Item Value="AvgSal"/>
+          <Item Value="DepartmentName"/>
+        </AttrNames>
+        <Accessors>
+          <Item Value="DepartmentDetailsVO"/>
+        </Accessors>
+      </nodeDefinition>
+      <nodeDefinition DefName="com.silbury.model.vo.DepartmentDetailsVO" Name="DepartmentMastersVO11">
+        <AttrNames>
+          <Item Value="Salary"/>
+          <Item Value="FirstName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="DepartmentMastersVO1Iterator" id="DepartmentMastersVO11">
+      <nodeDefinition DefName="com.silbury.model.vo.DepartmentMastersVO" Name="DepartmentMastersVO110">
+        <AttrNames>
+          <Item Value="EmpCount"/>
+          <Item Value="DepartmentName"/>
+        </AttrNames>
+        <Accessors>
+          <Item Value="DepartmentDetailsVO"/>
+        </Accessors>
+      </nodeDefinition>
+      <nodeDefinition DefName="com.silbury.model.vo.DepartmentDetailsVO" Name="DepartmentMastersVO111">
+        <AttrNames>
+          <Item Value="Salary"/>
+          <Item Value="FirstName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="EmployeeVOIterator" id="EmployeeId">
+      <AttrNames>
+        <Item Value="EmployeeId"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

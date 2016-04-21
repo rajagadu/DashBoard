@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="PieChartVO"
+  Version="12.2.1.0.31"
+  InheritPersonalization="merge"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  PageIterMode="Full">
+  <DesignTime>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="com.silbury.model.vo.PieChartVO_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <SQLQuery><![CDATA[SELECT   
+    JOBS.MIN_SALARY MIN_SALARY,   
+    JOBS.MAX_SALARY MAX_SALARY,   
+    JOBS.JOB_TITLE JOB_TITLE   
+FROM   
+    JOBS]]></SQLQuery>
+  <ViewAttribute
+    Name="MinSalary"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="6"
+    Scale="0"
+    Type="java.lang.Integer"
+    ColumnType="NUMBER"
+    AliasName="MIN_SALARY"
+    Expression="MIN_SALARY"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="MaxSalary"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="6"
+    Scale="0"
+    Type="java.lang.Integer"
+    ColumnType="NUMBER"
+    AliasName="MAX_SALARY"
+    Expression="MAX_SALARY"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="JobTitle"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="35"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="JOB_TITLE"
+    Expression="JOB_TITLE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="35"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="com.silbury.model.ModelBundle"/>
+  </ResourceBundle>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="JobTitle"/>
+  </AttrArray>
+</ViewObject>

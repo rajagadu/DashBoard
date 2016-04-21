@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.0.31" id="NewEMViewPageDef"
+                Package="Views">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <!--iterator Binds="DepartmentsEO22View1" RangeSize="5" DataControl="iDashBoardAmDataControl"
+              id="DepartmentsEO22View1Iterator"/-->
+    <iterator Binds="RegionsView" RangeSize="25" DataControl="iDashBoardAmDataControl" id="RegionsViewIterator"/>
+    <iterator Binds="EmployeesView" RangeSize="10" DataControl="iDashBoardAmDataControl" id="EmployeesViewIterator"/>
+    <taskFlow id="dynamicRegion1" taskFlowId="${viewScope.EmpCreateInsertBackingBean.dynamicTaskFlowId}"
+              activation="deferred" xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+    <iterator Binds="EmployeesEO_VIEW" RangeSize="25" DataControl="iDashBoardAmDataControl"
+              id="EmployeesEO_VIEW1Iterator" ChangeEventPolicy="none"/>
+    <!--iterator Binds="EmployeesEO22View3" DataControl="iDashBoardAmDataControl"
+              id="EmployeesEO22View3Iterator" RangeSize="20"/-->
+    <iterator id="PageDropDownLOV1Iterator" Binds="PageDropDownLOV1" DataControl="iDashBoardAmDataControl" RangeSize="25"/>
+
+    <!--searchRegion Binds="DepartmentsEO22View1Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="DepartmentsEO22View11Query"/-->
+    <iterator Binds="Employees_EVO1" RangeSize="20" DataControl="iDashBoardAmDataControl" id="Employees_EVO1Iterator"/>
+    <searchRegion Binds="Employees_EVO1Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="Employees_EVO1Query"/>
+    <iterator Binds="Departments_EVO1" RangeSize="5" DataControl="iDashBoardAmDataControl"
+              id="Departments_EVO1Iterator"/>
+    <searchRegion Binds="Departments_EVO1Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="Departments_EVO1Query"/>
+    <iterator Binds="EmpValuesInserEOView1" RangeSize="25" DataControl="iDashBoardAmDataControl"
+              id="EmpValuesInserEOView1Iterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="RegionsViewIterator" id="RegionsView">
+      <nodeDefinition DefName="com.silbury.model.evo.RegionsView" Name="RegionsView0">
+        <AttrNames>
+          <Item Value="RegionName"/>
+        </AttrNames>
+        <Accessors>
+          <Item Value="CountriesView"/>
+        </Accessors>
+      </nodeDefinition>
+      <nodeDefinition DefName="com.silbury.model.evo.CountriesView" Name="RegionsView1"
+                      TargetIterator="${bindings.CountriesViewIterator}">
+        <AttrNames>
+          <Item Value="CountryName"/>
+        </AttrNames>
+        <Accessors>
+          <Item Value="LocationsView"/>
+        </Accessors>
+      </nodeDefinition>
+      <nodeDefinition DefName="com.silbury.model.evo.LocationsView" Name="RegionsView2"
+                      TargetIterator="${bindings.LocationsViewIterator}">
+        <AttrNames>
+          <Item Value="City"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="EmployeesViewIterator" id="EmployeesView">
+      <nodeDefinition DefName="com.silbury.model.evo.EmployeesView" Name="EmployeesView0">
+        <AttrNames>
+          <Item Value="EmployeeId"/>
+          <Item Value="FirstName"/>
+          <Item Value="LastName"/>
+          <Item Value="Email"/>
+          <Item Value="PhoneNumber"/>
+          <Item Value="Salary"/>
+          <Item Value="CommissionPct"/>
+          <Item Value="DepartmentId"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="iDashBoardAmDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction" DataControl="iDashBoardAmDataControl"/>
+    <attributeValues IterBinding="EmployeesEO_VIEW1Iterator" id="EmployeeId">
+      <AttrNames>
+        <Item Value="EmployeeId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="EmployeesEO_VIEW1Iterator" id="FirstName">
+      <AttrNames>
+        <Item Value="FirstName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="EmployeesEO_VIEW1Iterator" id="LastName">
+      <AttrNames>
+        <Item Value="LastName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="EmployeesEO_VIEW1Iterator" id="Email">
+      <AttrNames>
+        <Item Value="Email"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="EmployeesEO_VIEW1Iterator" id="PhoneNumber">
+      <AttrNames>
+        <Item Value="PhoneNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="EmployeesEO_VIEW1Iterator" id="HireDate">
+      <AttrNames>
+        <Item Value="HireDate"/>
+      </AttrNames>
+    </attributeValues>
+    <!--list IterBinding="EmployeesEO_VIEW1Iterator" StaticList="false" Uses="LOV_JobId" id="JobId" DTSupportsMRU="false"
+          SelectItemValueMode="ListObject"/-->
+    <attributeValues IterBinding="EmployeesEO_VIEW1Iterator" id="Salary">
+      <AttrNames>
+        <Item Value="Salary"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="EmployeesEO_VIEW1Iterator" id="CommissionPct">
+      <AttrNames>
+        <Item Value="CommissionPct"/>
+      </AttrNames>
+    </attributeValues>
+    <!--list IterBinding="EmployeesEO_VIEW1Iterator" StaticList="false" Uses="LOV_ManagerId" id="ManagerId"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/-->
+    <list IterBinding="EmployeesEO_VIEW1Iterator" StaticList="false" Uses="LOV_DepartmentId" id="DepartmentId"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <action IterBinding="EmployeesEO_VIEW1Iterator" id="Execute" InstanceName="iDashBoardAmDataControl.EmployeesEO_VIEW"
+            DataControl="iDashBoardAmDataControl" RequiresUpdateModel="true" Action="iteratorExecute"/>
+    <methodAction id="CloneValue" RequiresUpdateModel="true" Action="invokeMethod" MethodName="CloneValue"
+                  IsViewObjectMethod="true" DataControl="iDashBoardAmDataControl"
+                  InstanceName="data.iDashBoardAmDataControl.EmployeesEO_VIEW"
+                  ReturnName="data.iDashBoardAmDataControl.methodResults.CloneValue_AppModuleDataControl_EmployeesEO_VIEW_CloneValue_result">
+      <NamedData NDName="empid" NDType="java.lang.String"/>
+    </methodAction>
+    <action IterBinding="Employees_EVO1Iterator" id="Delete" InstanceName="iDashBoardAmDataControl.EmployeesEO22View3"
+            DataControl="iDashBoardAmDataControl" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <list IterBinding="PageDropDownLOV1Iterator" ListOperMode="navigation" ListIter="PageDropDownLOV1Iterator"
+          id="PageDropDownLOV11" DTSupportsMRU="true" SelectItemValueMode="ListObject">
+      <AttrNames>
+        <Item Value="Value"/>
+      </AttrNames>
+    </list>
+    <action IterBinding="EmployeesEO22View3Iterator" id="Execute1"
+            InstanceName="iDashBoardAmDataControl.EmployeesEO22View3" DataControl="iDashBoardAmDataControl"
+            RequiresUpdateModel="true" Action="iteratorExecute"/>
+    <listOfValues IterBinding="EmployeesEO_VIEW1Iterator" StaticList="false" Uses="LOV_JobId" id="JobId"/>
+    <methodAction id="executeSearchVo" RequiresUpdateModel="true" Action="invokeMethod" MethodName="executeSearchVo"
+                  IsViewObjectMethod="false" DataControl="iDashBoardAmDataControl"
+                  InstanceName="data.iDashBoardAmDataControl.dataProvider">
+      <NamedData NDName="region" NDType="java.lang.String"/>
+      <NamedData NDName="country" NDType="java.lang.String"/>
+      <NamedData NDName="location" NDType="java.lang.String"/>
+    </methodAction>
+    <!--tree IterBinding="DepartmentsEO22View1Iterator" id="DepartmentsEO22View11">
+      <nodeDefinition DefName="com.silbury.model.evo.DepartmentsEO22View" Name="DepartmentsEO22View110">
+        <AttrNames>
+          <Item Value="DepartmentId"/>
+          <Item Value="DepartmentName"/>
+          <Item Value="ManagerId"/>
+          <Item Value="LocationId"/>
+          <Item Value="City"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree-->
+    <tree IterBinding="Employees_EVO1Iterator" id="Employees_EVO1">
+      <nodeDefinition DefName="com.silbury.model.evo.Employees_EVO" Name="Employees_EVO10">
+        <AttrNames>
+          <Item Value="CommissionPct"/>
+          <Item Value="DepartmentId"/>
+          <Item Value="Email"/>
+          <Item Value="EmployeeId"/>
+          <Item Value="FirstName"/>
+          <Item Value="HireDate"/>
+          <Item Value="JobId"/>
+          <Item Value="LastName"/>
+          <Item Value="ManagerId"/>
+          <Item Value="PhoneNumber"/>
+          <Item Value="Salary"/>
+          <Item Value="JobTitle"/>
+          <Item Value="DepartmentName"/>
+          <Item Value="FirstName1"/>
+          <Item Value="LastName1"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="Departments_EVO1Iterator" id="Departments_EVO1">
+      <nodeDefinition DefName="com.silbury.model.evo.Departments_EVO" Name="Departments_EVO10">
+        <AttrNames>
+          <Item Value="DepartmentId"/>
+          <Item Value="DepartmentName"/>
+          <Item Value="ManagerId"/>
+          <Item Value="FirstName"/>
+          <Item Value="LocationId1"/>
+          <Item Value="City"/>
+          <Item Value="Avgsal"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <!--listOfValues IterBinding="EmployeesEO_VIEW1Iterator" StaticList="false" Uses="LOV_ManagerId" id="ManagerId1"/-->
+    <action IterBinding="EmployeesEO_VIEW1Iterator" id="Delete1" InstanceName="iDashBoardAmDataControl.EmployeesEO_VIEW"
+            DataControl="iDashBoardAmDataControl" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <methodAction id="callDel" RequiresUpdateModel="true" Action="invokeMethod" MethodName="callDel"
+                  IsViewObjectMethod="false" DataControl="iDashBoardAmDataControl"
+                  InstanceName="data.iDashBoardAmDataControl.dataProvider">
+      <NamedData NDName="empId" NDType="java.lang.String"/>
+    </methodAction>
+    <attributeValues IterBinding="EmployeesEO_VIEW1Iterator" id="ManagerLastName">
+      <AttrNames>
+        <Item Value="ManagerLastName"/>
+      </AttrNames>
+    </attributeValues>
+    <listOfValues IterBinding="EmployeesEO_VIEW1Iterator" StaticList="false" Uses="LOV_DepartmentName"
+                  id="DepartmentName"/>
+    <attributeValues IterBinding="EmployeesEO_VIEW1Iterator" id="ManagerId">
+      <AttrNames>
+        <Item Value="ManagerId"/>
+      </AttrNames>
+    </attributeValues>
+    <listOfValues IterBinding="EmpValuesInserEOView1Iterator" StaticList="false" Uses="LOV_ManagerFName"
+                  id="ManagerFName"/>
+    <listOfValues IterBinding="EmpValuesInserEOView1Iterator" StaticList="false" Uses="LOV_DepName" id="DepName"/>
+    <listOfValues IterBinding="EmpValuesInserEOView1Iterator" StaticList="false" Uses="LOV_JbName" id="JbName"/>
+    <attributeValues IterBinding="EmpValuesInserEOView1Iterator" id="EmployeeId1">
+      <AttrNames>
+        <Item Value="EmployeeId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="EmpValuesInserEOView1Iterator" id="FirstName1">
+      <AttrNames>
+        <Item Value="FirstName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="EmpValuesInserEOView1Iterator" id="LastName1">
+      <AttrNames>
+        <Item Value="LastName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="EmpValuesInserEOView1Iterator" id="Email1">
+      <AttrNames>
+        <Item Value="Email"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="EmpValuesInserEOView1Iterator" id="PhoneNumber1">
+      <AttrNames>
+        <Item Value="PhoneNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="EmpValuesInserEOView1Iterator" id="HireDate1">
+      <AttrNames>
+        <Item Value="HireDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="EmpValuesInserEOView1Iterator" id="JobId1">
+      <AttrNames>
+        <Item Value="JobId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="EmpValuesInserEOView1Iterator" id="Salary1">
+      <AttrNames>
+        <Item Value="Salary"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="EmpValuesInserEOView1Iterator" id="CommissionPct1">
+      <AttrNames>
+        <Item Value="CommissionPct"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="EmpValuesInserEOView1Iterator" id="ManagerId1">
+      <AttrNames>
+        <Item Value="ManagerId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="EmpValuesInserEOView1Iterator" id="DepartmentId2">
+      <AttrNames>
+        <Item Value="DepartmentId"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="EmpValuesInserEOView1Iterator" id="CreateInsert"
+            InstanceName="iDashBoardAmDataControl.EmpValuesInserEOView1" DataControl="iDashBoardAmDataControl"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+    <methodAction id="executeValue" RequiresUpdateModel="true" Action="invokeMethod" MethodName="executeValue"
+                  IsViewObjectMethod="true" DataControl="iDashBoardAmDataControl"
+                  InstanceName="data.iDashBoardAmDataControl.EmpValuesInserEOView1">
+      <NamedData NDName="empid" NDType="java.lang.String"/>
+    </methodAction>
+  </bindings>
+</pageDefinition>
+

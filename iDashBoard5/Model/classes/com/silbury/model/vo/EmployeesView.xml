@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="EmployeesView"
+  Version="12.2.1.0.31"
+  InheritPersonalization="merge"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  PageIterMode="Full">
+  <DesignTime>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="com.silbury.model.vo.EmployeesView_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <SQLQuery><![CDATA[SELECT  
+DEP.DEPARTMENT_ID, 
+DEP.DEPARTMENT_NAME, 
+AVG(EMP.SALARY) AVG_SAL, 
+SUM(EMP.EMPLOYEE_ID)COUNT_EMP 
+FROM  
+DEPARTMENTS DEP, 
+EMPLOYEES EMP 
+WHERE  
+EMP.DEPARTMENT_ID = DEP.DEPARTMENT_ID 
+GROUP BY DEP.DEPARTMENT_ID,DEP.DEPARTMENT_NAME]]></SQLQuery>
+  <ViewAttribute
+    Name="DepartmentId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="4"
+    Scale="0"
+    Type="java.lang.Integer"
+    ColumnType="NUMBER"
+    AliasName="DEPARTMENT_ID"
+    Expression="DEPARTMENT_ID"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="DepartmentName"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="30"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="DEPARTMENT_NAME"
+    Expression="DEPARTMENT_NAME"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="30"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="AvgSal"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="AVG_SAL"
+    Expression="AVG_SAL"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="CountEmp"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="COUNT_EMP"
+    Expression="COUNT_EMP"
+    SQLType="NUMERIC"/>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="com.silbury.model.ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

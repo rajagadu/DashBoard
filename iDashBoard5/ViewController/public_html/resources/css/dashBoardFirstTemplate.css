@@ -1,0 +1,31 @@
+
+
+/*The content and header go here. padding in the bottom to account for 
+  footer height*/
+.tablet-first-main-area{
+  min-height: 100%;
+  padding-bottom: 50px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  position:relative;
+  height: auto !important;
+}
+
+.tablet-first-footer-area{
+  height:49px;
+  position:relative;
+  margin-top:-50px;
+}
+
+.tablet-first-content-container{
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.tablet-first-content-container-flowing{
+  margin: 10px 20px;
+}
+

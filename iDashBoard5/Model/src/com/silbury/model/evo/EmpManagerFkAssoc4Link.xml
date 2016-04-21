@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewLink SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewLink
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="EmpManagerFkAssoc4Link"
+  Version="12.2.1.0.31"
+  InheritPersonalization="merge"
+  EntityAssociation="com.silbury.model.eo.EmpManagerFkAssoc4">
+  <ViewLinkDefEnd
+    Name="EmpValuesInserEOView"
+    Cardinality="1"
+    Source="true"
+    Owner="com.silbury.model.evo.EmpValuesInserEOView">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_finderName" Value="EmpValuesInserEOView"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.silbury.model.evo.EmpValuesInserEOView.EmployeeId"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ViewLinkDefEnd
+    Name="EmployeesEO_VIEW"
+    Cardinality="-1"
+    Owner="com.silbury.model.evo.EmployeesEO_VIEW">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_finderName" Value="EmployeesEO_VIEW"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.silbury.model.evo.EmployeesEO_VIEW.ManagerId"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+</ViewLink>

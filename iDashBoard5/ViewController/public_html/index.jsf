@@ -1,0 +1,92 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!--Copyright (c) 2014 Oracle and/or its affiliates. All rights reserved.-->  
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+        xmlns:trh="http://myfaces.apache.org/trinidad/html">
+    <af:document title="Dashboard" id="d1">
+        <af:messages id="m1"/>
+        <af:form id="f1" usesUpload="true">
+            <af:panelStretchLayout id="psl1" inlineStyle="background-color:#45749D;" dimensionsFrom="parent">
+                <f:facet name="center">
+                    <af:panelSpringboard id="ps1" displayMode="grid" childCreation="immediate" immediate="true">
+                        <af:showDetailItem text="Dashboard" id="sdi1" icon="/resources/images/dashboard.png"
+                                           inflexibleHeight="100">
+                            <af:panelGroupLayout id="pgl4" layout="scroll">
+                                <af:pageTemplate viewId="/template/DashBoardTemplate.jspx" id="pt1">
+                                    <f:facet name="status">
+                                        <af:menuBar id="mb1">
+                                            <af:menu text=""
+                                                     id="m2">
+                                                <!--af:commandMenuItem text="Sign Out" id="cmi1"/-->
+                                            </af:menu>
+                                        </af:menuBar>
+                                    </f:facet>
+                                    <f:facet name="center">
+                                        <af:panelBorderLayout id="pbl1" inlineStyle="padding: 0 80px 0 80px;">
+                                            <af:region value="#{bindings.dynamicRegion1.regionModel}" id="r1"
+                                                       styleClass="ContentContainerWorkaround"/>
+                                        </af:panelBorderLayout>
+                                    </f:facet>
+                                    <f:attribute name="endWidth" value="0px"/>
+                                    <f:attribute name="startWidth" value="0px"/>
+                                    <f:attribute name="showFooter" value="true"/>
+                                    <f:attribute name="brandingMaxWidth" value="1024px"/>
+                                </af:pageTemplate>
+                            </af:panelGroupLayout>
+                        </af:showDetailItem>
+                        <af:showDetailItem text="Employee List" id="sdi2" flex="0"
+                                           icon="/resources/images/emp-list.png">
+                            <af:panelGroupLayout id="pgl1" layout="scroll">
+                                <af:region value="#{bindings.emplsflow1.regionModel}" id="r2"/>
+                            </af:panelGroupLayout>
+                        </af:showDetailItem>
+                        <af:showDetailItem text="Employee Management" id="sdi3" icon="/resources/images/management.png"
+                                           flex="0" stretchChildren="first" inflexibleHeight="100">
+                            <af:region value="#{bindings.NewEmpMgmtTF1.regionModel}" id="r3"/>
+                        </af:showDetailItem>
+                        <af:showDetailItem text="Upload" id="sdi4" icon="/resources/images/Utilities.png">
+                            <af:panelGroupLayout id="pgl2" layout="scroll">
+                                <af:region value="#{bindings.UtlisTF1.regionModel}" id="r6"/>
+                            </af:panelGroupLayout>           
+                        </af:showDetailItem>
+                        <af:showDetailItem text="Search" id="sdi5" icon="/resources/images/search-icon.png">
+                            <af:panelGroupLayout layout="scroll" id="pgl3">
+                                <af:region value="#{bindings.SearchTF1.regionModel}" id="r4"/>
+                            </af:panelGroupLayout>
+                        </af:showDetailItem>
+                    </af:panelSpringboard>
+                </f:facet>
+            </af:panelStretchLayout>
+        </af:form>
+        <f:facet name="metaContainer">
+            <trh:meta name="apple-mobile-web-app-capable" content="yes"/>
+            <trh:meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui"/>
+            <af:resource type="javascript" source="resources/js/WBMediaQuery.js"/>
+            <af:resource type="javascript" source="resources/js/WBClientScript.js"/>
+            <af:resource type="javascript" source="https://code.jquery.com/jquery-2.2.2.min.js"/>
+            <af:resource type="javascript">
+              function onDialogCancel(evt) {
+                  var outcome = evt.getOutcome();
+                  if (outcome == AdfDialogEvent.OUTCOME_CANCEL) {
+                      //call server
+                      var eventSource = evt.getSource();
+                      var immediate = true;
+                      AdfCustomEvent.queue(eventSource, "DialogCancelHandlerEvent", 
+                      {
+                      },
+                      immediate);
+                      evt.cancel();
+                  }
+              }
+              //           function resetForm1(){  
+              //           alert('resetform');
+              //            $('[id^=r3:0:p12::]').find('input[type=text]').each(function(){
+              //                var defaultVal = $(this).data('default');
+              //                 $(this).val(defaultVal);
+              //             //    alert('clicked cancel!!'); 
+              //            });
+              //           }
+            </af:resource>
+        </f:facet>
+    </af:document>
+</f:view>

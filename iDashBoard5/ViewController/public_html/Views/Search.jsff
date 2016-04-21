@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+  <af:decorativeBox id="db2" inlineStyle="padding:0 15%;" theme="contentBody">
+    <f:facet name="center">
+      <af:panelGroupLayout layout="vertical" id="pgl1" inlineStyle="min-height:800px;">
+        <af:panelHeader text="Search Employees" id="ph1">
+          <af:query id="qryId1" headerText="Search" disclosed="true"
+                    value="#{bindings.ImplicitViewCriteriaQuery1.queryDescriptor}"
+                    model="#{bindings.ImplicitViewCriteriaQuery1.queryModel}"
+                    queryListener="#{bindings.ImplicitViewCriteriaQuery1.processQuery}"
+                    queryOperationListener="#{bindings.ImplicitViewCriteriaQuery1.processQueryOperation}"
+                    resultComponentId="::resId1" maxColumns="2" rows="5" inlineStyle="font-size:large;"/>
+        </af:panelHeader>
+        <af:table value="#{bindings.SearchVO1.collectionModel}" var="row" rows="#{bindings.SearchVO1.rangeSize}"
+                  emptyText="#{bindings.SearchVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                  rowBandingInterval="0" fetchSize="#{bindings.SearchVO1.rangeSize}" id="resId1" scrollPolicy="page"
+                  selectedRowKeys="#{bindings.SearchVO1.collectionModel.selectedRow}"
+                  selectionListener="#{bindings.SearchVO1.collectionModel.makeCurrent}" rowSelection="single">
+          <af:column headerText="#{bindings.SearchVO1.hints.FirstName.label}" id="resId1c1"
+                     sortProperty="#{bindings.SearchVO1.hints.FirstName.name}" sortable="true">
+            <af:outputText value="#{row.FirstName}" shortDesc="#{bindings.SearchVO1.hints.FirstName.tooltip}" id="ot1"/>
+          </af:column>
+          <af:column headerText="#{bindings.SearchVO1.hints.LastName.label}" id="resId1c2"
+                     sortProperty="#{bindings.SearchVO1.hints.LastName.name}" sortable="true">
+            <af:outputText value="#{row.LastName}" shortDesc="#{bindings.SearchVO1.hints.LastName.tooltip}" id="ot2"/>
+          </af:column>
+          <af:column headerText="#{bindings.SearchVO1.hints.Email.label}" id="resId1c3"
+                     sortProperty="#{bindings.SearchVO1.hints.Email.name}" sortable="true">
+            <af:outputText value="#{row.Email}" shortDesc="#{bindings.SearchVO1.hints.Email.tooltip}" id="ot3"/>
+          </af:column>
+          <af:column headerText="#{bindings.SearchVO1.hints.PhoneNumber.label}" id="resId1c4"
+                     sortProperty="#{bindings.SearchVO1.hints.PhoneNumber.name}" sortable="true">
+            <af:outputText value="#{row.PhoneNumber}" shortDesc="#{bindings.SearchVO1.hints.PhoneNumber.tooltip}"
+                           id="ot4"/>
+          </af:column>
+          <af:column headerText="#{bindings.SearchVO1.hints.HireDate.label}" id="resId1c5"
+                     sortProperty="#{bindings.SearchVO1.hints.HireDate.name}" sortable="true">
+            <af:outputText value="#{row.HireDate}" shortDesc="#{bindings.SearchVO1.hints.HireDate.tooltip}" id="ot5">
+              <af:convertDateTime pattern="#{bindings.SearchVO1.hints.HireDate.format}"/>
+            </af:outputText>
+          </af:column>
+          <af:column headerText="#{bindings.SearchVO1.hints.Salary.label}" id="resId1c6"
+                     sortProperty="#{bindings.SearchVO1.hints.Salary.name}" sortable="true">
+            <af:outputText value="#{row.Salary}" shortDesc="#{bindings.SearchVO1.hints.Salary.tooltip}" id="ot6">
+              <af:convertNumber groupingUsed="false" pattern="#{bindings.SearchVO1.hints.Salary.format}"/>
+            </af:outputText>
+          </af:column>
+          <af:column headerText="#{bindings.SearchVO1.hints.CommissionPct.label}" id="resId1c7"
+                     sortProperty="#{bindings.SearchVO1.hints.CommissionPct.name}" sortable="true">
+            <af:outputText value="#{row.CommissionPct}" shortDesc="#{bindings.SearchVO1.hints.CommissionPct.tooltip}"
+                           id="ot7">
+              <af:convertNumber groupingUsed="false" pattern="#{bindings.SearchVO1.hints.CommissionPct.format}"/>
+            </af:outputText>
+          </af:column>
+          <af:column headerText="#{bindings.SearchVO1.hints.DepartmentName.label}" id="resId1c8"
+                     sortProperty="#{bindings.SearchVO1.hints.DepartmentName.name}" sortable="true" headerNoWrap="true">
+            <af:outputText value="#{row.DepartmentName}" shortDesc="#{bindings.SearchVO1.hints.DepartmentName.tooltip}"
+                           id="ot8"/>
+          </af:column>
+          <af:column headerText="#{bindings.SearchVO1.hints.JobTitle.label}" id="resId1c9"
+                     sortProperty="#{bindings.SearchVO1.hints.JobTitle.name}" sortable="true">
+            <af:outputText value="#{row.JobTitle}" shortDesc="#{bindings.SearchVO1.hints.JobTitle.tooltip}" id="ot9"/>
+          </af:column>
+          <af:column headerText="#{bindings.SearchVO1.hints.ManagerFirstName.label}" id="resId1c10" sortable="true">
+            <af:outputText value="#{row.ManagerFirstName}" shortDesc="#{bindings.SearchVO1.hints.ManagerFirstName.tooltip}"
+                           id="ot10"/>
+          </af:column>
+        </af:table>
+      </af:panelGroupLayout>
+    </f:facet>
+  </af:decorativeBox>
+</ui:composition>

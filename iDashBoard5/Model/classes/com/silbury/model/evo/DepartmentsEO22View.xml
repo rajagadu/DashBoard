@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="DepartmentsEO22View"
+  Version="12.2.1.0.31"
+  InheritPersonalization="merge"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  PageIterMode="Full"
+  SelectListFlags="1"
+  FromListFlags="1"
+  WhereFlags="1"
+  SelectAllAttributes="false">
+  <ViewAccessor
+    Name="LocationsView1"
+    ViewObjectName="com.silbury.model.evo.LocationsView"
+    RowLevelBinds="true"/>
+  <EntityUsage
+    Name="DepartmentsEO22"
+    Entity="com.silbury.model.eo.DepartmentsEO22"/>
+  <ViewAttribute
+    Name="DepartmentId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="DepartmentId"
+    EntityUsage="DepartmentsEO22"
+    AliasName="DEPARTMENT_ID"/>
+  <ViewAttribute
+    Name="DepartmentName"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="DepartmentName"
+    EntityUsage="DepartmentsEO22"
+    AliasName="DEPARTMENT_NAME"/>
+  <ViewAttribute
+    Name="ManagerId"
+    PrecisionRule="true"
+    EntityAttrName="ManagerId"
+    EntityUsage="DepartmentsEO22"
+    AliasName="MANAGER_ID"/>
+  <ViewAttribute
+    Name="LocationId"
+    PrecisionRule="true"
+    EntityAttrName="LocationId"
+    EntityUsage="DepartmentsEO22"
+    AliasName="LOCATION_ID"/>
+  <ViewLinkAccessor
+    Name="EmployeesEO22View"
+    ViewLink="com.silbury.model.eo.EmpDeptFkAssoc1Link"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="LocationsEO22View"
+    ViewLink="com.silbury.model.evo.LocDeptFkLink22"
+    Type="oracle.jbo.Row"
+    Reversed="true"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="EmpValuesInserEOView"
+    ViewLink="com.silbury.model.evo.EmpDeptFkAssoc2Link"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+</ViewObject>

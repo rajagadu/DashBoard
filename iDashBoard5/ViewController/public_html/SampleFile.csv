@@ -1,0 +1,10 @@
+EmployeeId,FirstName,LastName,DepartmentId,ManagerId,PhoneNumber,Salary
+ ,John,Russell,80,100,5544778855,14000
+ ,Karen,Partners,80,100,5544778855,13500
+ ,Alberto,Errazuriz,80,100,5544778855,12000
+ ,Eleni,Zlotkey,80,100,5544778855,10500
+ ,Peter,Tucker,80,145,5544778855,10000
+ ,David,Bernstein,80,145,5544778855,9500
+ ,Peter,Hall,80,145,5544778855,9000
+ ,Christopher,Olsen,80,145,5544778855,8000
+ ,Nanette,Cambrault,80,145,5544778855,7500

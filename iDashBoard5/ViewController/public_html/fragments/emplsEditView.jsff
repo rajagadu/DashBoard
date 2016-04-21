@@ -1,0 +1,137 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+  <af:group id="g1">
+    <af:panelHeader text="&nbsp;&nbsp;#{bindings.FirstName.inputValue} #{bindings.LastName.inputValue} - Personal Data" id="ph2"
+                    inlineStyle="margin-left:30%; margin-right:30%; background-color:white;">
+      <f:facet name="context"/>
+      <f:facet name="menuBar"/>
+      <f:facet name="toolbar">
+        <af:toolbar id="t1">
+          <af:button actionListener="#{bindings.Commit.execute}" text="Save"
+                     id="b2"/>
+          <af:button actionListener="#{bindings.Rollback.execute}" text="Cancel" immediate="true" id="b3">
+            <af:resetActionListener/>
+          </af:button>
+          <af:button text="Back" id="b1" action="view"/>
+        </af:toolbar>
+      </f:facet>
+      <f:facet name="legend"/>
+      <f:facet name="info"/>
+      <af:separator id="s3"/>
+      <af:panelFormLayout id="pfl2">
+        <f:facet name="footer"/>
+        <af:inputText value="#{bindings.EmployeeId.inputValue}" label="#{bindings.EmployeeId.hints.label}"
+                      required="#{bindings.EmployeeId.hints.mandatory}"
+                      columns="#{bindings.EmployeeId.hints.displayWidth}"
+                      maximumLength="#{bindings.EmployeeId.hints.precision}"
+                      shortDesc="#{bindings.EmployeeId.hints.tooltip}" id="it1" disabled="true">
+          <f:validator binding="#{bindings.EmployeeId.validator}"/>
+          <af:convertNumber groupingUsed="false" pattern="#{bindings.EmployeeId.format}"/>
+        </af:inputText>
+        <af:inputText value="#{bindings.FirstName.inputValue}" label="#{bindings.FirstName.hints.label}"
+                      required="#{bindings.FirstName.hints.mandatory}"
+                      columns="#{bindings.FirstName.hints.displayWidth}"
+                      maximumLength="#{bindings.FirstName.hints.precision}"
+                      shortDesc="#{bindings.FirstName.hints.tooltip}" id="it2">
+          <f:validator binding="#{bindings.FirstName.validator}"/>
+        </af:inputText>
+        <af:inputText value="#{bindings.LastName.inputValue}" label="#{bindings.LastName.hints.label}"
+                      required="#{bindings.LastName.hints.mandatory}" columns="#{bindings.LastName.hints.displayWidth}"
+                      maximumLength="#{bindings.LastName.hints.precision}"
+                      shortDesc="#{bindings.LastName.hints.tooltip}" id="it3">
+          <f:validator binding="#{bindings.LastName.validator}"/>
+        </af:inputText>
+        <af:inputText value="#{bindings.Email.inputValue}" label="#{bindings.Email.hints.label}"
+                      required="#{bindings.Email.hints.mandatory}" columns="#{bindings.Email.hints.displayWidth}"
+                      maximumLength="#{bindings.Email.hints.precision}" shortDesc="#{bindings.Email.hints.tooltip}"
+                      id="it4">
+          <f:validator binding="#{bindings.Email.validator}"/>
+        </af:inputText>
+        <af:inputText value="#{bindings.PhoneNumber.inputValue}" label="#{bindings.PhoneNumber.hints.label}"
+                      required="#{bindings.PhoneNumber.hints.mandatory}"
+                      columns="#{bindings.PhoneNumber.hints.displayWidth}"
+                      maximumLength="#{bindings.PhoneNumber.hints.precision}"
+                      shortDesc="#{bindings.PhoneNumber.hints.tooltip}" id="it5">
+          <f:validator binding="#{bindings.PhoneNumber.validator}"/>
+        </af:inputText>
+        <af:inputDate value="#{bindings.HireDate.inputValue}" label="#{bindings.HireDate.hints.label}"
+                      required="#{bindings.HireDate.hints.mandatory}" columns="#{bindings.HireDate.hints.displayWidth}"
+                      shortDesc="#{bindings.HireDate.hints.tooltip}" id="id1">
+          <f:validator binding="#{bindings.HireDate.validator}"/>
+          <af:convertDateTime pattern="#{bindings.HireDate.format}"/>
+        </af:inputDate>
+      </af:panelFormLayout>
+    </af:panelHeader>
+    <af:spacer width="10" height="10" id="s4"/>
+   <af:panelHeader text="&nbsp;&nbsp;Job Data" id="ph1" inlineStyle="margin-left:30%; margin-right:30%; background-color:white;">
+      <f:facet name="context"/>
+      <f:facet name="menuBar"/>
+      <f:facet name="toolbar"/>
+      <f:facet name="legend"/>
+      <f:facet name="info"/>
+      <af:separator id="s2"/>
+      <af:panelFormLayout id="pfl1" rows="4">
+        <af:inputText value="#{bindings.Salary.inputValue}" label="#{bindings.Salary.hints.label}"
+                      required="#{bindings.Salary.hints.mandatory}" columns="#{bindings.Salary.hints.displayWidth}"
+                      maximumLength="#{bindings.Salary.hints.precision}" shortDesc="#{bindings.Salary.hints.tooltip}"
+                      id="it7">
+          <f:validator binding="#{bindings.Salary.validator}"/>
+          <af:convertNumber groupingUsed="false" pattern="#{bindings.Salary.format}" currencySymbol="€"/>
+        </af:inputText>
+        <af:inputText value="#{bindings.CommissionPct.inputValue}" label="#{bindings.CommissionPct.hints.label}"
+                      required="#{bindings.CommissionPct.hints.mandatory}"
+                      columns="#{bindings.CommissionPct.hints.displayWidth}"
+                      maximumLength="#{bindings.CommissionPct.hints.precision}"
+                      shortDesc="#{bindings.CommissionPct.hints.tooltip}" id="it8">
+          <f:validator binding="#{bindings.CommissionPct.validator}"/>
+          <af:convertNumber groupingUsed="false" pattern="#{bindings.CommissionPct.format}"/>
+        </af:inputText>
+        <af:inputText value="#{bindings.DepartmentName.inputValue}" label="#{bindings.DepartmentName.hints.label}"
+                      required="#{bindings.DepartmentName.hints.mandatory}"
+                      columns="#{bindings.DepartmentName.hints.displayWidth}"
+                      maximumLength="#{bindings.DepartmentName.hints.precision}"
+                      shortDesc="#{bindings.DepartmentName.hints.tooltip}" id="it11">
+          <f:validator binding="#{bindings.DepartmentName.validator}"/>
+        </af:inputText>
+        <af:inputText value="#{bindings.JobTitle.inputValue}" label="#{bindings.JobTitle.hints.label}"
+                      required="#{bindings.JobTitle.hints.mandatory}" columns="#{bindings.JobTitle.hints.displayWidth}"
+                      maximumLength="#{bindings.JobTitle.hints.precision}"
+                      shortDesc="#{bindings.JobTitle.hints.tooltip}" id="it13">
+          <f:validator binding="#{bindings.JobTitle.validator}"/>
+        </af:inputText>
+        <af:inputText value="#{bindings.City.inputValue}" label="#{bindings.City.hints.label}"
+                      required="#{bindings.City.hints.mandatory}" columns="#{bindings.City.hints.displayWidth}"
+                      maximumLength="#{bindings.City.hints.precision}" shortDesc="#{bindings.City.hints.tooltip}"
+                      id="it16">
+          <f:validator binding="#{bindings.City.validator}"/>
+        </af:inputText>
+        <af:inputText value="#{bindings.StateProvince.inputValue}" label="#{bindings.StateProvince.hints.label}"
+                      required="#{bindings.StateProvince.hints.mandatory}"
+                      columns="#{bindings.StateProvince.hints.displayWidth}"
+                      maximumLength="#{bindings.StateProvince.hints.precision}"
+                      shortDesc="#{bindings.StateProvince.hints.tooltip}" id="it18">
+          <f:validator binding="#{bindings.StateProvince.validator}"/>
+        </af:inputText>
+        <af:panelLabelAndMessage label="Manager" id="plam1">
+          <af:inputText value="#{bindings.FirstNameManager.inputValue}" label="#{bindings.FirstNameManager.hints.label}"
+                        required="#{bindings.FirstNameManager.hints.mandatory}"
+                        columns="#{bindings.FirstNameManager.hints.displayWidth}"
+                        maximumLength="#{bindings.FirstNameManager.hints.precision}"
+                        shortDesc="#{bindings.FirstNameManager.hints.tooltip}" id="it19" simple="true">
+            <f:validator binding="#{bindings.FirstNameManager.validator}"/>
+          </af:inputText>
+          <f:facet name="end">
+            <af:inputText value="#{bindings.LastNameManager.inputValue}" label="#{bindings.LastNameManager.hints.label}"
+                          required="#{bindings.LastNameManager.hints.mandatory}"
+                          columns="#{bindings.LastNameManager.hints.displayWidth}"
+                          maximumLength="#{bindings.LastNameManager.hints.precision}"
+                          shortDesc="#{bindings.LastNameManager.hints.tooltip}" id="it21" simple="true">
+              <f:validator binding="#{bindings.LastNameManager.validator}"/>
+            </af:inputText>
+          </f:facet>
+        </af:panelLabelAndMessage>
+      </af:panelFormLayout>
+    </af:panelHeader>
+  </af:group>
+</ui:composition>

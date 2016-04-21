@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="DepartmentsEO22"
+  Version="12.2.1.0.31"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="DEPARTMENTS"
+  AliasName="DepartmentsEO22"
+  BindingStyle="OracleName"
+  RowClass="com.silbury.model.eo.DepartmentsEO22Impl">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Init|Access"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Attribute
+    Name="DepartmentId"
+    IsNotNull="true"
+    Precision="4"
+    Scale="0"
+    ColumnName="DEPARTMENT_ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="DEPARTMENTS"
+    PrimaryKey="true"/>
+  <Attribute
+    Name="DepartmentName"
+    IsNotNull="true"
+    Precision="30"
+    ColumnName="DEPARTMENT_NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="DEPARTMENTS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="30"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ManagerId"
+    Precision="6"
+    Scale="0"
+    ColumnName="MANAGER_ID"
+    SQLType="NUMERIC"
+    Type="java.lang.Integer"
+    ColumnType="NUMBER"
+    TableName="DEPARTMENTS"/>
+  <Attribute
+    Name="LocationId"
+    Precision="4"
+    Scale="0"
+    ColumnName="LOCATION_ID"
+    SQLType="NUMERIC"
+    Type="java.lang.Integer"
+    ColumnType="NUMBER"
+    TableName="DEPARTMENTS"/>
+  <AccessorAttribute
+    Name="EmployeesEO22"
+    Association="com.silbury.model.eo.DeptMgrFkAssoc1"
+    AssociationEnd="com.silbury.model.eo.DeptMgrFkAssoc1.EmployeesEO22"
+    AssociationOtherEnd="com.silbury.model.eo.DeptMgrFkAssoc1.DepartmentsEO22"
+    Type="oracle.jbo.server.EntityImpl"
+    IsUpdateable="true"/>
+  <AccessorAttribute
+    Name="EmployeesEO221"
+    Association="com.silbury.model.eo.EmpDeptFkAssoc1"
+    AssociationEnd="com.silbury.model.eo.EmpDeptFkAssoc1.EmployeesEO221"
+    AssociationOtherEnd="com.silbury.model.eo.EmpDeptFkAssoc1.DepartmentsEO221"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <AccessorAttribute
+    Name="LocationsEO22"
+    Association="com.silbury.model.evo.LocDeptAssoc22"
+    AssociationEnd="com.silbury.model.evo.LocDeptAssoc22.LocationsEO22"
+    AssociationOtherEnd="com.silbury.model.evo.LocDeptAssoc22.DepartmentsEO22"
+    Type="oracle.jbo.server.EntityImpl"
+    IsUpdateable="true"/>
+  <AccessorAttribute
+    Name="EmpValuesInserEO"
+    Association="com.silbury.model.eo.fk_DepartmentsEO1Assoc"
+    AssociationEnd="com.silbury.model.eo.fk_DepartmentsEO1Assoc.EmpValuesInserEO"
+    AssociationOtherEnd="com.silbury.model.eo.fk_DepartmentsEO1Assoc.DepartmentsEO22"
+    Type="oracle.jbo.server.EntityImpl"
+    IsUpdateable="true"/>
+  <AccessorAttribute
+    Name="EmpValuesInserEO1"
+    Association="com.silbury.model.eo.DeptMgrFkAssoc2"
+    AssociationEnd="com.silbury.model.eo.DeptMgrFkAssoc2.EmpValuesInserEO1"
+    AssociationOtherEnd="com.silbury.model.eo.DeptMgrFkAssoc2.DepartmentsEO221"
+    Type="oracle.jbo.server.EntityImpl"
+    IsUpdateable="true"/>
+  <AccessorAttribute
+    Name="EmpValuesInserEO2"
+    Association="com.silbury.model.eo.EmpDeptFkAssoc2"
+    AssociationEnd="com.silbury.model.eo.EmpDeptFkAssoc2.EmpValuesInserEO2"
+    AssociationOtherEnd="com.silbury.model.eo.EmpDeptFkAssoc2.DepartmentsEO222"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <Key
+    Name="DeptIdPk"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="DEPT_ID_PK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.silbury.model.eo.DepartmentsEO22.DepartmentId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="DeptNameNn">
+    <DesignTime>
+      <Attr Name="_checkCondition" Value='"DEPARTMENT_NAME" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+      <Attr Name="_DBObjectName" Value="DEPT_NAME_NN"/>
+    </DesignTime>
+    <AttrArray Name="Attributes"/>
+  </Key>
+  <Key
+    Name="DeptLocFk">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="LOC_ID_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="DEPT_LOC_FK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.silbury.model.eo.DepartmentsEO22.LocationId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="DeptMgrFk">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="EMP_EMP_ID_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="DEPT_MGR_FK"/>
+      <Attr Name="_isCascadeDelete" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.silbury.model.eo.DepartmentsEO22.ManagerId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="fk_DepartmentsEO1">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="EMP_EMP_ID_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="FK_DEPARTMENTS_EO1"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.silbury.model.eo.DepartmentsEO22.ManagerId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="fk_DepartmentsEO22">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="LOC_ID_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="FK_DEPARTMENTS_EO22"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.silbury.model.eo.DepartmentsEO22.LocationId"/>
+    </AttrArray>
+  </Key>
+</Entity>

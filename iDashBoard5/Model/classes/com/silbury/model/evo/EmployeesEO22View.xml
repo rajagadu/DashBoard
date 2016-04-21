@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="EmployeesEO22View"
+  Version="12.2.1.0.31"
+  InheritPersonalization="merge"
+  SelectListFlags="1"
+  FromListFlags="1"
+  WhereFlags="1"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  SelectAllAttributes="false"
+  PageIterMode="Full"
+  FetchMode="FETCH_AS_NEEDED">
+  <ViewAccessor
+    Name="Department_LOV1"
+    ViewObjectName="com.silbury.model.evo.Department_LOV"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="Manager_LOV1"
+    ViewObjectName="com.silbury.model.evo.Manager_LOV"
+    RowLevelBinds="true"/>
+  <ListBinding
+    Name="LOV_DepartmentId"
+    ListVOName="Department_LOV1"
+    ListRangeSize="-1"
+    ComboRowCountHint="10"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="DepartmentId"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="DepartmentId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="DepartmentId"/>
+      <Item Value="DepartmentName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_ManagerId"
+    ListVOName="Manager_LOV1"
+    ListRangeSize="-1"
+    ComboRowCountHint="10"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="ManagerId"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="EmployeeId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="EmployeeId"/>
+      <Item Value="FirstName"/>
+      <Item Value="LastName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <EntityUsage
+    Name="EmployeesEO22"
+    Entity="com.silbury.model.eo.EmployeesEO22"/>
+  <ViewAttribute
+    Name="EmployeeId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="EmployeeId"
+    EntityUsage="EmployeesEO22"
+    AliasName="EMPLOYEE_ID"/>
+  <ViewAttribute
+    Name="FirstName"
+    PrecisionRule="true"
+    EntityAttrName="FirstName"
+    EntityUsage="EmployeesEO22"
+    AliasName="FIRST_NAME">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="com.silbury.model.evo.EmployeesEO22View.FirstName_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="LastName"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="LastName"
+    EntityUsage="EmployeesEO22"
+    AliasName="LAST_NAME">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="LastName_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="JobId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="JobId"
+    EntityUsage="EmployeesEO22"
+    AliasName="JOB_ID">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="JobId_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Salary"
+    PrecisionRule="true"
+    EntityAttrName="Salary"
+    EntityUsage="EmployeesEO22"
+    AliasName="SALARY">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="Salary_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ManagerId"
+    PrecisionRule="true"
+    EntityAttrName="ManagerId"
+    EntityUsage="EmployeesEO22"
+    AliasName="MANAGER_ID"
+    LOVName="LOV_ManagerId">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="ManagerId_LABEL"/>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="DepartmentId"
+    PrecisionRule="true"
+    EntityAttrName="DepartmentId"
+    EntityUsage="EmployeesEO22"
+    AliasName="DEPARTMENT_ID"
+    LOVName="LOV_DepartmentId">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="DepartmentId_LABEL"/>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewLinkAccessor
+    Name="EmployeesEO22View"
+    ViewLink="com.silbury.model.eo.EmpManagerFkAssoc2Link"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="DepartmentsEO22View"
+    ViewLink="com.silbury.model.eo.DeptMgrFkAssoc1Link"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="EmpValuesInserEOView"
+    ViewLink="com.silbury.model.evo.EmpManagerFkAssoc9Link"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="com.silbury.model.ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Association SYSTEM "jbo_03_01.dtd">
+<!---->
+<Association
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="LocDeptAssoc22"
+  Version="12.2.1.0.31"
+  InheritPersonalization="merge">
+  <DesignTime>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <AssociationEnd
+    Name="LocationsEO22"
+    Cardinality="1"
+    Source="true"
+    Owner="com.silbury.model.eo.LocationsEO22"
+    LockLevel="NONE">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_aggregation" Value="0"/>
+      <Attr Name="_finderName" Value="LocationsEO22"/>
+      <Attr Name="_foreignKey" Value="com.silbury.model.eo.LocationsEO22.LocIdPk"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.silbury.model.eo.LocationsEO22.LocationId"/>
+    </AttrArray>
+  </AssociationEnd>
+  <AssociationEnd
+    Name="DepartmentsEO22"
+    Cardinality="-1"
+    Owner="com.silbury.model.eo.DepartmentsEO22">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_aggregation" Value="0"/>
+      <Attr Name="_finderName" Value="DepartmentsEO22"/>
+      <Attr Name="_foreignKey" Value="com.silbury.model.eo.DepartmentsEO22.fk_DepartmentsEO22"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.silbury.model.eo.DepartmentsEO22.LocationId"/>
+    </AttrArray>
+  </AssociationEnd>
+</Association>

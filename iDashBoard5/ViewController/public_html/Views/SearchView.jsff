@@ -1,0 +1,133 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <af:panelGridLayout id="pgl1">
+        <af:gridRow height="100%" id="gr1">
+            <af:gridCell width="100%" halign="stretch" valign="stretch" id="gc1">
+                <!-- Content -->
+                <af:panelGroupLayout layout="vertical" id="pgl2" binding="#{backingBeanScope.backing_SearchView.pgl2}">
+                    <af:panelHeader text="EmployeesENTITYOBJECT" id="ph1"
+                                    binding="#{backingBeanScope.backing_SearchView.ph1}">
+                        <af:query id="qryId1" headerText="Search" disclosed="true"
+                                  value="#{bindings.ImplicitViewCriteriaQuery.queryDescriptor}"
+                                  model="#{bindings.ImplicitViewCriteriaQuery.queryModel}"
+                                  queryListener="#{bindings.ImplicitViewCriteriaQuery.processQuery}"
+                                  queryOperationListener="#{bindings.ImplicitViewCriteriaQuery.processQueryOperation}"
+                                  resultComponentId="::resId1" binding="#{backingBeanScope.backing_SearchView.qryId1}"/>
+                    </af:panelHeader>
+                    <af:table value="#{bindings.EmployeesEO_VIEW.collectionModel}" var="row"
+                              rows="#{bindings.EmployeesEO_VIEW.rangeSize}"
+                              emptyText="#{bindings.EmployeesEO_VIEW.viewable ? 'No data to display.' : 'Access Denied.'}"
+                              rowBandingInterval="0" fetchSize="#{bindings.EmployeesEO_VIEW.rangeSize}"
+                              filterModel="#{bindings.ImplicitViewCriteriaQuery.queryDescriptor}" filterVisible="true"
+                              queryListener="#{bindings.ImplicitViewCriteriaQuery.processQuery}" varStatus="vs"
+                              id="resId1" binding="#{backingBeanScope.backing_SearchView.resId1}">
+                        <af:column sortProperty="#{bindings.EmployeesEO_VIEW.hints.EmployeeId.name}" filterable="true"
+                                   sortable="true" headerText="#{bindings.EmployeesEO_VIEW.hints.EmployeeId.label}"
+                                   id="resId1c1">
+                            <af:outputText value="#{row.EmployeeId}"
+                                           shortDesc="#{bindings.EmployeesEO_VIEW.hints.EmployeeId.tooltip}" id="ot1">
+                                <af:convertNumber groupingUsed="false"
+                                                  pattern="#{bindings.EmployeesEO_VIEW.hints.EmployeeId.format}"/>
+                            </af:outputText>
+                        </af:column>
+                        <af:column sortProperty="#{bindings.EmployeesEO_VIEW.hints.FirstName.name}" filterable="true"
+                                   sortable="true" headerText="#{bindings.EmployeesEO_VIEW.hints.FirstName.label}"
+                                   id="resId1c2">
+                            <af:outputText value="#{row.FirstName}"
+                                           shortDesc="#{bindings.EmployeesEO_VIEW.hints.FirstName.tooltip}" id="ot2"/>
+                        </af:column>
+                        <af:column sortProperty="#{bindings.EmployeesEO_VIEW.hints.LastName.name}" filterable="true"
+                                   sortable="true" headerText="#{bindings.EmployeesEO_VIEW.hints.LastName.label}"
+                                   id="resId1c3">
+                            <af:outputText value="#{row.LastName}"
+                                           shortDesc="#{bindings.EmployeesEO_VIEW.hints.LastName.tooltip}" id="ot3"/>
+                        </af:column>
+                        <af:column sortProperty="#{bindings.EmployeesEO_VIEW.hints.Email.name}" filterable="true"
+                                   sortable="true" headerText="#{bindings.EmployeesEO_VIEW.hints.Email.label}"
+                                   id="resId1c4">
+                            <af:outputText value="#{row.Email}"
+                                           shortDesc="#{bindings.EmployeesEO_VIEW.hints.Email.tooltip}" id="ot4"/>
+                        </af:column>
+                        <af:column sortProperty="#{bindings.EmployeesEO_VIEW.hints.PhoneNumber.name}" filterable="true"
+                                   sortable="true" headerText="#{bindings.EmployeesEO_VIEW.hints.PhoneNumber.label}"
+                                   id="resId1c5">
+                            <af:outputText value="#{row.PhoneNumber}"
+                                           shortDesc="#{bindings.EmployeesEO_VIEW.hints.PhoneNumber.tooltip}" id="ot5"/>
+                        </af:column>
+                        <af:column sortProperty="#{bindings.EmployeesEO_VIEW.hints.HireDate.name}" filterable="true"
+                                   sortable="true" headerText="#{bindings.EmployeesEO_VIEW.hints.HireDate.label}"
+                                   id="resId1c6">
+                            <f:facet name="filter">
+                                <af:inputDate value="#{bindings.ImplicitViewCriteriaQuery.queryDescriptor.filterConjunctionCriterion.criterionMap.HireDate.value}"
+                                              id="id1" binding="#{backingBeanScope.backing_SearchView.id1}">
+                                    <af:convertDateTime pattern="#{bindings.EmployeesEO_VIEW.hints.HireDate.format}"/>
+                                </af:inputDate>
+                            </f:facet>
+                            <af:outputText value="#{row.HireDate}"
+                                           shortDesc="#{bindings.EmployeesEO_VIEW.hints.HireDate.tooltip}" id="ot6">
+                                <af:convertDateTime pattern="#{bindings.EmployeesEO_VIEW.hints.HireDate.format}"/>
+                            </af:outputText>
+                        </af:column>
+                        <af:column sortProperty="#{bindings.EmployeesEO_VIEW.hints.JobId.name}" filterable="true"
+                                   sortable="true" headerText="#{bindings.EmployeesEO_VIEW.hints.JobId.label}"
+                                   id="resId1c7">
+                            <af:selectOneChoice value="#{row.bindings.JobId.inputValue}"
+                                                label="#{row.bindings.JobId.label}"
+                                                required="#{bindings.EmployeesEO_VIEW.hints.JobId.mandatory}"
+                                                shortDesc="#{bindings.EmployeesEO_VIEW.hints.JobId.tooltip}"
+                                                readOnly="true" id="soc1">
+                                <f:selectItems value="#{row.bindings.JobId.items}" id="si1"/>
+                                <f:validator binding="#{row.bindings.JobId.validator}"/>
+                            </af:selectOneChoice>
+                        </af:column>
+                        <af:column sortProperty="#{bindings.EmployeesEO_VIEW.hints.Salary.name}" filterable="true"
+                                   sortable="true" headerText="#{bindings.EmployeesEO_VIEW.hints.Salary.label}"
+                                   id="resId1c8">
+                            <af:outputText value="#{row.Salary}"
+                                           shortDesc="#{bindings.EmployeesEO_VIEW.hints.Salary.tooltip}" id="ot7">
+                                <af:convertNumber groupingUsed="false"
+                                                  pattern="#{bindings.EmployeesEO_VIEW.hints.Salary.format}"/>
+                            </af:outputText>
+                        </af:column>
+                        <af:column sortProperty="#{bindings.EmployeesEO_VIEW.hints.CommissionPct.name}"
+                                   filterable="true" sortable="true"
+                                   headerText="#{bindings.EmployeesEO_VIEW.hints.CommissionPct.label}" id="resId1c9">
+                            <af:outputText value="#{row.CommissionPct}"
+                                           shortDesc="#{bindings.EmployeesEO_VIEW.hints.CommissionPct.tooltip}"
+                                           id="ot8">
+                                <af:convertNumber groupingUsed="false"
+                                                  pattern="#{bindings.EmployeesEO_VIEW.hints.CommissionPct.format}"/>
+                            </af:outputText>
+                        </af:column>
+                        <af:column sortProperty="#{bindings.EmployeesEO_VIEW.hints.ManagerId.name}" filterable="true"
+                                   sortable="true" headerText="#{bindings.EmployeesEO_VIEW.hints.ManagerId.label}"
+                                   id="resId1c10">
+                            <af:selectOneChoice value="#{row.bindings.ManagerId.inputValue}"
+                                                label="#{row.bindings.ManagerId.label}"
+                                                required="#{bindings.EmployeesEO_VIEW.hints.ManagerId.mandatory}"
+                                                shortDesc="#{bindings.EmployeesEO_VIEW.hints.ManagerId.tooltip}"
+                                                readOnly="true" id="soc2">
+                                <f:selectItems value="#{row.bindings.ManagerId.items}" id="si2"/>
+                                <f:validator binding="#{row.bindings.ManagerId.validator}"/>
+                            </af:selectOneChoice>
+                        </af:column>
+                        <af:column sortProperty="#{bindings.EmployeesEO_VIEW.hints.DepartmentId.name}" filterable="true"
+                                   sortable="true" headerText="#{bindings.EmployeesEO_VIEW.hints.DepartmentId.label}"
+                                   id="resId1c11">
+                            <af:selectOneChoice value="#{row.bindings.DepartmentId.inputValue}"
+                                                label="#{row.bindings.DepartmentId.label}"
+                                                required="#{bindings.EmployeesEO_VIEW.hints.DepartmentId.mandatory}"
+                                                shortDesc="#{bindings.EmployeesEO_VIEW.hints.DepartmentId.tooltip}"
+                                                readOnly="true" id="soc3">
+                                <f:selectItems value="#{row.bindings.DepartmentId.items}" id="si3"/>
+                                <f:validator binding="#{row.bindings.DepartmentId.validator}"/>
+                            </af:selectOneChoice>
+                        </af:column>
+                    </af:table>
+                </af:panelGroupLayout>
+            </af:gridCell>
+        </af:gridRow>
+    </af:panelGridLayout>
+    <!--oracle-jdev-comment:auto-binding-backing-bean-name:backing_SearchView-->
+</ui:composition>

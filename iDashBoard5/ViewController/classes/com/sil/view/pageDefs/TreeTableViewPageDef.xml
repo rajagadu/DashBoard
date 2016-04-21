@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.0.31" id="TreeTableViewPageDef"
+                Package="com.sil.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="RegionsView" RangeSize="25" DataControl="iDashBoardAmDataControl" id="RegionsViewIterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="RegionsViewIterator" id="RegionsView">
+      <nodeDefinition DefName="com.silbury.model.evo.RegionsView" Name="RegionsView0">
+        <AttrNames>
+          <Item Value="RegionId"/>
+          <Item Value="RegionName"/>
+        </AttrNames>
+        <Accessors>
+          <Item Value="CountriesView"/>
+        </Accessors>
+      </nodeDefinition>
+      <nodeDefinition DefName="com.silbury.model.evo.CountriesView" Name="RegionsView1">
+        <AttrNames>
+          <Item Value="CountryId"/>
+          <Item Value="CountryName"/>
+        </AttrNames>
+        <Accessors>
+          <Item Value="LocationsView"/>
+        </Accessors>
+      </nodeDefinition>
+      <nodeDefinition DefName="com.silbury.model.evo.LocationsView" Name="RegionsView2">
+        <AttrNames>
+          <Item Value="LocationId"/>
+          <Item Value="City"/>
+        </AttrNames>
+        <Accessors>
+          <Item Value="DepartmentsView"/>
+        </Accessors>
+      </nodeDefinition>
+      <nodeDefinition DefName="com.silbury.model.evo.DepartmentsView" Name="RegionsView3">
+        <AttrNames>
+          <Item Value="DepartmentId"/>
+          <Item Value="DepartmentName"/>
+        </AttrNames>
+        <Accessors>
+          <Item Value="EmployeesView"/>
+        </Accessors>
+      </nodeDefinition>
+      <nodeDefinition DefName="com.silbury.model.evo.EmployeesView" Name="RegionsView4">
+        <AttrNames>
+          <Item Value="EmployeeId"/>
+          <Item Value="FirstName"/>
+          <Item Value="LastName"/>
+          <Item Value="DepartmentId"/>
+          <Item Value="Email"/>
+          <Item Value="PhoneNumber"/>
+          <Item Value="Salary"/>
+        </AttrNames>
+        <Accessors>
+          <Item Value="JobHistoryView"/>
+        </Accessors>
+      </nodeDefinition>
+      <nodeDefinition DefName="com.silbury.model.evo.JobHistoryView" Name="RegionsView5">
+        <AttrNames>
+          <Item Value="EmployeeId"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

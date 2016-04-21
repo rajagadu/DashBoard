@@ -1,0 +1,499 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!--Copyright (c) 2014 Oracle and/or its affiliates. All rights reserved.-->
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:fn="http://java.sun.com/jsp/jstl/functions" xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <af:menuBar id="mb2">
+        <af:menu text="Menu" id="m2">
+            <af:commandMenuItem type="check" text="My Notifications" id="cmi2"
+                                actionListener="#{ShowNHideBean.snhMyNotifications}"
+                                selected="#{ShowNHideBean.renderMyNotifications}" inlineStyle="border:1px solid blue"/>
+            <af:commandMenuItem type="check" text="My Assigned Tasks" id="cmi5"
+                                actionListener="#{ShowNHideBean.snhAssignedTasks}"
+                                selected="#{ShowNHideBean.renderAssignedTasks}"/>
+            <af:commandMenuItem type="check" text="My Completed Tasks" id="cmi6"
+                                actionListener="#{ShowNHideBean.snhCompleteTasks}"
+                                selected="#{ShowNHideBean.renderCompleteTasks}"/>
+            <af:commandMenuItem type="check" text="Department Employees" id="cmi1"
+                                actionListener="#{ShowNHideBean.snhDepartmentEmployees}"
+                                selected="#{ShowNHideBean.renderDepartmentEmployees}"/>
+            <af:commandMenuItem type="check" text="Department locations across the world" id="cmi3"
+                                actionListener="#{ShowNHideBean.snhDeptLocations}"
+                                selected="#{ShowNHideBean.renderDeptLocations}"/>
+            <af:commandMenuItem type="check" text="Regions And Departments" id="cmi4"
+                                actionListener="#{ShowNHideBean.snhAttritionHistory}"
+                                selected="#{ShowNHideBean.renderAttritionHistory}"/>
+            <af:commandMenuItem text="Sign Out" id="cmi7" actionListener="#{ShowNHideBean.onLogout}"
+                                icon="/resources/images/logout.png"/>
+        </af:menu>
+    </af:menuBar>
+    <af:panelSplitter orientation="horizontal" splitterPosition="250" id="ps2">
+        <f:facet name="first">
+            <af:decorativeBox id="db1" inlineStyle="border: 7px solid #6A94B9; margin-top: 7px;">
+                <f:facet name="center">
+                    <af:panelGroupLayout id="pgl2" styleClass="AFStretchWidth">
+                        <af:panelGroupLayout id="pb11">
+                            <af:panelGroupLayout id="pgl10" halign="center" layout="vertical">
+                                <af:image id="me" source="/resources/images/people/#{bindings.EmployeeId.inputValue}.png"
+                                          shortDesc="Photo of #{bindings.FirstName.inputValue} #{bindings.LastName.inputValue}"
+                                          styleClass="WBPersonImage"/>
+                            </af:panelGroupLayout>
+                        </af:panelGroupLayout>
+                        
+                        <af:panelFormLayout id="pfl1">
+                            <af:inputText value="#{bindings.FirstName.inputValue} #{bindings.LastName.inputValue}"
+                                          label="Name " required="#{bindings.FirstName.hints.mandatory}" readOnly="true"
+                                          columns="#{bindings.FirstName.hints.displayWidth}"
+                                          maximumLength="#{bindings.FirstName.hints.precision}"
+                                          shortDesc="#{bindings.FirstName.hints.tooltip}" id="it1"
+                                          contentStyle="color: #2D5F8B;" labelStyle="color: #194872;">
+                                <f:validator binding="#{bindings.FirstName.validator}"/>
+                            </af:inputText>
+                            <af:inputText value="#{bindings.JobTitle.inputValue}"
+                                          label="#{bindings.JobTitle.hints.label}"
+                                          required="#{bindings.JobTitle.hints.mandatory}" readOnly="true"
+                                          columns="#{bindings.JobTitle.hints.displayWidth}"
+                                          maximumLength="#{bindings.JobTitle.hints.precision}"
+                                          shortDesc="#{bindings.JobTitle.hints.tooltip}" id="it3"
+                                          contentStyle="color: #2D5F8B;" labelStyle="color: #194872;">
+                                <f:validator binding="#{bindings.JobTitle.validator}"/>
+                            </af:inputText>
+                            <af:inputText value="#{bindings.DepartmentName.inputValue}" label="Department"
+                                          required="#{bindings.DepartmentName.hints.mandatory}" readOnly="true"
+                                          columns="#{bindings.DepartmentName.hints.displayWidth}"
+                                          maximumLength="#{bindings.DepartmentName.hints.precision}"
+                                          shortDesc="#{bindings.DepartmentName.hints.tooltip}" id="it4"
+                                          contentStyle="color: #2D5F8B;" labelStyle="color: #194872;">
+                                <f:validator binding="#{bindings.DepartmentName.validator}"/>
+                            </af:inputText>
+                            <af:inputText value="#{bindings.PhoneNumber.inputValue}"
+                                          label="#{bindings.PhoneNumber.hints.label}"
+                                          required="#{bindings.PhoneNumber.hints.mandatory}" readOnly="true"
+                                          columns="#{bindings.PhoneNumber.hints.displayWidth}"
+                                          maximumLength="#{bindings.PhoneNumber.hints.precision}"
+                                          shortDesc="#{bindings.PhoneNumber.hints.tooltip}" id="it5"
+                                          contentStyle="color: #2D5F8B;" labelStyle="color: #194872;">
+                                <f:validator binding="#{bindings.PhoneNumber.validator}"/>
+                            </af:inputText>
+                            <af:inputText value="#{bindings.Email.inputValue}" label="#{bindings.Email.hints.label}"
+                                          required="#{bindings.Email.hints.mandatory}" readOnly="true"
+                                          columns="#{bindings.Email.hints.displayWidth}"
+                                          maximumLength="#{bindings.Email.hints.precision}"
+                                          shortDesc="#{bindings.Email.hints.tooltip}" id="it6"
+                                          contentStyle="color: #2D5F8B;" labelStyle="color: #194872;">
+                                <f:validator binding="#{bindings.Email.validator}"/>
+                            </af:inputText>
+                            <af:inputText value="#{bindings.StreetAddress.inputValue}"
+                                          label="#{bindings.StreetAddress.hints.label}"
+                                          required="#{bindings.StreetAddress.hints.mandatory}" readOnly="true"
+                                          columns="#{bindings.StreetAddress.hints.displayWidth}"
+                                          maximumLength="#{bindings.StreetAddress.hints.precision}"
+                                          shortDesc="#{bindings.StreetAddress.hints.tooltip}" id="it11"
+                                          contentStyle="color: #2D5F8B;" labelStyle="color: #194872;">
+                                <f:validator binding="#{bindings.StreetAddress.validator}"/>
+                            </af:inputText>
+                            <af:inputText value="#{bindings.City.inputValue}" label="#{bindings.City.hints.label}"
+                                          required="#{bindings.City.hints.mandatory}" readOnly="true"
+                                          columns="#{bindings.City.hints.displayWidth}"
+                                          maximumLength="#{bindings.City.hints.precision}"
+                                          shortDesc="#{bindings.City.hints.tooltip}" id="it12"
+                                          contentStyle="color: #2D5F8B;" labelStyle="color: #194872;">
+                                <f:validator binding="#{bindings.City.validator}"/>
+                            </af:inputText>
+                            <af:inputText value="#{bindings.StateProvince.inputValue}"
+                                          label="#{bindings.StateProvince.hints.label}"
+                                          required="#{bindings.StateProvince.hints.mandatory}" readOnly="true"
+                                          columns="#{bindings.StateProvince.hints.displayWidth}"
+                                          maximumLength="#{bindings.StateProvince.hints.precision}"
+                                          shortDesc="#{bindings.StateProvince.hints.tooltip}" id="it13"
+                                          contentStyle="color: #2D5F8B;" labelStyle="color: #194872;">
+                                <f:validator binding="#{bindings.StateProvince.validator}"/>
+                            </af:inputText>
+                            <af:inputText value="#{bindings.CountryName.inputValue}"
+                                          label="#{bindings.CountryName.hints.label}"
+                                          required="#{bindings.CountryName.hints.mandatory}" readOnly="true"
+                                          columns="#{bindings.CountryName.hints.displayWidth}"
+                                          maximumLength="#{bindings.CountryName.hints.precision}"
+                                          shortDesc="#{bindings.CountryName.hints.tooltip}" id="it14"
+                                          contentStyle="color: #2D5F8B;" labelStyle="color: #194872;">
+                                <f:validator binding="#{bindings.CountryName.validator}"/>
+                            </af:inputText>
+                            <af:inputText value="#{bindings.PostalCode.inputValue}"
+                                          label="#{bindings.PostalCode.hints.label}"
+                                          required="#{bindings.PostalCode.hints.mandatory}" readOnly="true"
+                                          columns="#{bindings.PostalCode.hints.displayWidth}"
+                                          maximumLength="#{bindings.PostalCode.hints.precision}"
+                                          shortDesc="#{bindings.PostalCode.hints.tooltip}" id="it15"
+                                          contentStyle="color: #2D5F8B;" labelStyle="color: #194872;">
+                                <f:validator binding="#{bindings.PostalCode.validator}"/>
+                            </af:inputText>
+                            <af:inputText value="#{bindings.Salary.inputValue}" label="#{bindings.Salary.hints.label}"
+                                          required="#{bindings.Salary.hints.mandatory}" readOnly="true"
+                                          columns="#{bindings.Salary.hints.displayWidth}"
+                                          maximumLength="#{bindings.Salary.hints.precision}"
+                                          shortDesc="#{bindings.Salary.hints.tooltip}" id="it16"
+                                          contentStyle="color: #2D5F8B;" labelStyle="color: #194872;">
+                                <f:validator binding="#{bindings.Salary.validator}"/>
+                                <af:convertNumber groupingUsed="false" pattern="#{bindings.Salary.format}"/>
+                            </af:inputText>
+                            <af:inputDate value="#{bindings.HireDate.inputValue}" readOnly="true"
+                                          label="#{bindings.HireDate.hints.label}"
+                                          required="#{bindings.HireDate.hints.mandatory}"
+                                          columns="#{bindings.HireDate.hints.displayWidth}"
+                                          shortDesc="#{bindings.HireDate.hints.tooltip}" id="id1"
+                                          contentStyle="color: #2D5F8B;" labelStyle="color: #194872;">
+                                <f:validator binding="#{bindings.HireDate.validator}"/>
+                                <af:convertDateTime pattern="#{bindings.HireDate.format}"/>
+                            </af:inputDate>
+                            <af:inputText value="#{bindings.MgrFirstNm.inputValue} #{bindings.MgrLastNm.inputValue}"
+                                          label="Manager :" required="#{bindings.MgrFirstNm.hints.mandatory}"
+                                          readOnly="true" columns="#{bindings.MgrFirstNm.hints.displayWidth}"
+                                          maximumLength="#{bindings.MgrFirstNm.hints.precision}"
+                                          shortDesc="#{bindings.MgrFirstNm.hints.tooltip}" id="it17"
+                                          contentStyle="color: #2D5F8B;" labelStyle="color: #194872;">
+                                <f:validator binding="#{bindings.MgrFirstNm.validator}"/>
+                            </af:inputText>
+                        </af:panelFormLayout>
+                    </af:panelGroupLayout>
+                </f:facet>
+            </af:decorativeBox>
+        </f:facet>
+        <f:facet name="second">
+            <af:panelSplitter id="ps1" orientation="vertical" splitterPosition="700">
+                <f:facet name="first">
+                    <af:panelDashboard id="pd1" columns="3" rowHeight="350px"
+                                       binding="#{ShowNHideBean.bindPanelDashboard}"
+                                       dropListener="#{DragNDropBean.DnDHandler}" inlineStyle="overflow: hidden;">
+                        <af:panelBox text="My Notifications" id="MyNotifications" showDisclosure="false"
+                                     binding="#{ShowNHideBean.bindMyNotificationsBox}"
+                                     inlineStyle=" border: 7px solid #6A94B9;" partialTriggers="b1 lv1:b2 lv1:b3 p1 d2">
+                            <af:panelGroupLayout id="pb3"
+                                                 styleClass="WBDisplayBlock WBDisplayBlockMargin WBDashboardCardSize WBDashboardCard">
+                                <af:panelGroupLayout id="pgl6" layout="vertical" visible="false">
+                                    <af:outputFormatted value="My Notifications" id="of1"
+                                                        styleClass="WBDashboardCardTitle"/>
+                                </af:panelGroupLayout>
+                                <af:panelGroupLayout id="pglntc" layout="vertical">
+                                    <af:panelGroupLayout id="pglntr1" layout="horizontal">
+                                        <af:image id="imgAppr" source="/resources/images/qual_approved_32_full.png"
+                                                  shortDesc="Approved Icon" inlineStyle="vertical-align: middle;"/>
+                                        <af:spacer id="spAppr1" width="10" height="1"/>
+                                        <af:outputText id="otApprNum" value="#{bindings.Notifyapproved.inputValue}"
+                                                       styleClass="WBDashboardMetricLabel"/>
+                                        <af:spacer id="spAppr2" width="10" height="1"/>
+                                        <af:outputText id="otAppr" value="Approved"
+                                                       styleClass="WBDashboardMetricLabel"/>
+                                    </af:panelGroupLayout>
+                                    <af:panelGroupLayout id="cfNotifyDiv1" styleClass="WBDashboardDivider">
+                                        <af:spacer id="spNotifyDiv1" width="1" height="1"/>
+                                    </af:panelGroupLayout>
+                                    <af:panelGroupLayout id="pglntr2" layout="horizontal">
+                                        <af:image id="imgAppr1" source="/resources/images/qual_info_32_full.png"
+                                                  shortDesc="Info Icon" inlineStyle="vertical-align: middle;"/>
+                                        <af:spacer id="spAppr3" width="10" height="1"/>
+                                        <af:outputText id="otApprNum2" value="#{bindings.Notifywaiting.inputValue}"
+                                                       styleClass="WBDashboardMetricLabel"/>
+                                        <af:spacer id="spAppr4" width="10" height="1"/>
+                                        <af:outputText id="otAppr2" value="Waiting"
+                                                       styleClass="WBDashboardMetricLabel"/>
+                                    </af:panelGroupLayout>
+                                    <af:panelGroupLayout id="cfNotifyDiv2" styleClass="WBDashboardDivider">
+                                        <af:spacer id="spNotifyDiv2" width="1" height="1"/>
+                                    </af:panelGroupLayout>
+                                    <af:panelGroupLayout id="pglntr3" layout="horizontal">
+                                        <af:image id="imgAppr2" source="/resources/images/qual_reject_32_full.png"
+                                                  shortDesc="Reject Icon" inlineStyle="vertical-align: middle;"/>
+                                        <af:spacer id="spAppr5" width="10" height="1"/>
+                                        <af:outputText id="otApprNum3" value="#{bindings.Notifyrejected.inputValue}"
+                                                       styleClass="WBDashboardMetricLabel"/>
+                                        <af:spacer id="spAppr6" width="10" height="1"/>
+                                        <af:outputText id="otAppr3" value="Rejected"
+                                                       styleClass="WBDashboardMetricLabel"/>
+                                    </af:panelGroupLayout>
+                                </af:panelGroupLayout>
+                            </af:panelGroupLayout>
+                            <af:componentDragSource/>
+                        </af:panelBox>
+                        <af:panelBox text="My Assigned Tasks" showDisclosure="false" id="MyAssignedTasks" partialTriggers="lv1:b2 lv1:b3 p1 d2"
+                                     binding="#{ShowNHideBean.bindAssignedTasksBox}"
+                                     inlineStyle=" border: 7px solid #6A94B9;">
+                            <f:facet name="toolbar">
+                                <af:button text="Create Task" id="b1">
+                                    <af:showPopupBehavior popupId="p1"/>
+                                </af:button>
+                            </f:facet>
+                            <af:panelGroupLayout id="pgl3" layout="vertical" styleClass="">
+                                <af:listView value="#{bindings.AssignedTasksVO1.collectionModel}" var="item"
+                                             emptyText="#{bindings.AssignedTasksVO1.viewable ? 'No Tasks Assigned.' : 'Access Denied.'}"
+                                             fetchSize="#{bindings.AssignedTasksVO1.rangeSize}" id="lv1">
+                                    <af:listItem id="li1" inlineStyle="padding-left: 0px;padding-right: 0px;">
+                                        <af:panelGridLayout id="pgl4" styleClass="">
+                                            <af:gridRow marginTop="5px" height="auto" marginBottom="5px" id="gr1">
+                                                <af:gridCell marginStart="5px" width="50%" id="gc1">
+                                                    <af:panelGroupLayout id="pgl1" layout="horizontal"
+                                                                         inlineStyle="word-wrap: break-word;margin-bottom:2px">
+                                                        <af:outputText value="Task Name: " id="ot3"
+                                                                       inlineStyle="color: #194872;font-size: 12px;font-weight: bold;"/>
+                                                        <af:outputFormatted value="#{item.bindings.Taskname.inputValue}"
+                                                                            id="of3" inlineStyle="color: #194872;"/>
+                                                    </af:panelGroupLayout>
+                                                    <af:panelGroupLayout id="pgl11" layout="horizontal">
+                                                        <af:outputText value="Workflow Step: " id="ot4"
+                                                                       inlineStyle="color: #194872;font-size: 12px;font-weight: bold;"/>
+                                                        <af:outputFormatted value="#{item.bindings.Wfstep.inputValue}"
+                                                                            id="of14" inlineStyle="color: #194872;"/>
+                                                    </af:panelGroupLayout>
+                                                </af:gridCell>
+                                                <af:gridCell marginStart="5px" width="50%" marginEnd="5px" id="gc2">
+                                                    <af:panelGroupLayout id="pgl12" layout="vertical">
+                                                        <af:outputFormatted value="#{item.bindings.Wfcompletion.inputValue}%"
+                                                                            id="of8"/>
+                                                        <af:progressIndicator id="pi2" value="#{WorkflowPcBean}"
+                                                                              styleClass="#{WorkflowPcBean.styleClass}"/>
+                                                        <af:spacer width="10" height="10" id="s3"/>
+                                                        <af:panelGroupLayout id="pgl5" layout="horizontal">
+                                                            <af:button text="Approve" id="b2"
+                                                                       actionListener="#{WorkflowAprNRej.workflowApprove}"
+                                                                       inlineStyle="font-size: 11px;min-height: 23px;"/>
+                                                            <af:spacer width="10" height="10" id="s2"/>
+                                                            <af:button text="Reject" id="b3"
+                                                                       actionListener="#{WorkflowAprNRej.workflowReject}"
+                                                                       inlineStyle="font-size: 11px;min-height: 23px;"/>
+                                                        </af:panelGroupLayout>
+                                                    </af:panelGroupLayout>
+                                                </af:gridCell>
+                                            </af:gridRow>
+                                        </af:panelGridLayout>
+                                    </af:listItem>
+                                </af:listView>
+                            </af:panelGroupLayout>
+                            <af:componentDragSource/>
+                            <!-- Popup for  Creating workflow task -->
+                            <af:popup childCreation="deferred" autoCancel="disabled" id="p1">
+                                <af:dialog id="d2" dialogListener="#{WorkflowAprNRej.createTask}">
+                                    <f:facet name="buttonBar"/>
+                                    <af:panelFormLayout id="pfl2">
+                                        <af:inputText value="#{bindings.Taskid.inputValue}"
+                                                      label="#{bindings.Taskid.hints.label}"
+                                                      required="#{bindings.Taskid.hints.mandatory}"
+                                                      columns="#{bindings.Taskid.hints.displayWidth}"
+                                                      maximumLength="#{bindings.Taskid.hints.precision}"
+                                                      shortDesc="#{bindings.Taskid.hints.tooltip}" id="it2"
+                                                      rendered="false" showRequired="true">
+                                            <f:validator binding="#{bindings.Taskid.validator}"/>
+                                        </af:inputText>
+                                        <af:inputText label="Task" required="#{bindings.Taskname.hints.mandatory}"
+                                                      columns="#{bindings.Taskname.hints.displayWidth}"
+                                                      maximumLength="#{bindings.Taskname.hints.precision}"
+                                                      shortDesc="#{bindings.Taskname.hints.tooltip}" id="it7"
+                                                      binding="#{WorkflowAprNRej.taskNameBinding}">
+                                            <f:validator binding="#{bindings.Taskname.validator}"/>
+                                        </af:inputText>
+                                        <af:inputText value="#{bindings.Taskcreator.inputValue}" label="Task Created By"
+                                                      required="#{bindings.Taskcreator.hints.mandatory}"
+                                                      columns="#{bindings.Taskcreator.hints.displayWidth}"
+                                                      maximumLength="#{bindings.Taskcreator.hints.precision}"
+                                                      shortDesc="#{bindings.Taskcreator.hints.tooltip}" id="it9">
+                                            <f:validator binding="#{bindings.Taskcreator.validator}"/>
+                                        </af:inputText>
+                                        <af:inputDate value="#{bindings.Taskcreateddate.inputValue}"
+                                                      label="Created Date"
+                                                      required="#{bindings.Taskcreateddate.hints.mandatory}"
+                                                      columns="#{bindings.Taskcreateddate.hints.displayWidth}"
+                                                      shortDesc="#{bindings.Taskcreateddate.hints.tooltip}" id="id2">
+                                            <f:validator binding="#{bindings.Taskcreateddate.validator}"/>
+                                            <af:convertDateTime pattern="#{bindings.Taskcreateddate.format}"/>
+                                        </af:inputDate>
+                                    </af:panelFormLayout>
+                                </af:dialog>
+                            </af:popup>
+                            <!-- Popup for  Treemap -->
+                            <af:popup childCreation="deferred" autoCancel="disabled" id="p2">
+                                <af:panelWindow id="pw1" inlineStyle="width:1250px;overflow: hidden">
+                                    <dvt:treemap summary="highest salary by dept" id="t2" value="#{bindings.DepartmentMastersVO1.treeModel}" var="row"
+                                                 inlineStyle="width:1200px;">
+                                        <af:switcher facetName="#{row.hierTypeBinding.name}" id="s4">
+                                            <f:facet name="DepartmentMastersVO11">
+                                                <dvt:treemapNode value="#{row.Salary}"
+                                                                 label="#{row['FirstName']} € #{row['Salary']}"
+                                                                 id="tn3">
+                                                    <dvt:attributeGroups value="#{row.FirstName}" type="color"
+                                                                         label="#{row.FirstName}" id="ag7"/>
+                                                </dvt:treemapNode>
+                                            </f:facet>
+                                            <f:facet name="DepartmentMastersVO10">
+                                                <dvt:treemapNode value="#{row.AvgSal}" label="#{row.DepartmentName}"
+                                                                 id="tn4"/>
+                                            </f:facet>
+                                        </af:switcher>
+                                    </dvt:treemap>
+                                </af:panelWindow>
+                            </af:popup>
+                            <af:popup childCreation="deferred" autoCancel="disabled" id="p3">
+                                <af:panelWindow id="pw2">
+                                    <dvt:sunburst id="t4" value="#{bindings.DepartmentMastersVO11.collectionModel}" var="row" summary="Employee Count Based on Department">
+                                        <af:switcher facetName="#{row.hierTypeBinding.name}" id="s6">
+                                            <f:facet name="DepartmentMastersVO111">
+                                                <dvt:sunburstNode value="#{row.Salary}" label="#{row.FirstName}"
+                                                                  id="sn5">
+                                                    <dvt:attributeGroups value="#{row.Salary}" type="color"
+                                                                         label="#{row.Salary}" id="ag2"/>
+                                                </dvt:sunburstNode>
+                                            </f:facet>
+                                            <f:facet name="DepartmentMastersVO110">
+                                                <dvt:sunburstNode value="#{row.EmpCount}" label="#{row.DepartmentName}"
+                                                                  id="sn6">
+                                                    <dvt:attributeGroups value="#{row.EmpCount}" type="color"
+                                                                         label="#{row.EmpCount}" id="ag4"/>
+                                                </dvt:sunburstNode>
+                                            </f:facet>
+                                        </af:switcher>
+                                    </dvt:sunburst>
+                                </af:panelWindow>
+                            </af:popup>
+                        </af:panelBox>
+                        <af:panelBox text="My Completed Tasks" showDisclosure="false" id="MyCompletedTasks" partialTriggers="lv1:b2 lv1:b3"
+                                     binding="#{ShowNHideBean.bindCompleteTasksBox}"
+                                     inlineStyle=" border: 7px solid #6A94B9;">
+                            <f:facet name="toolbar"/>
+                            <af:panelGroupLayout id="pgl7" layout="vertical">
+                                <af:listView value="#{bindings.CompletedTaskVO1.collectionModel}" var="item"
+                                             emptyText="#{bindings.CompletedTaskVO1.viewable ? 'No Completed Tasks.' : 'Access Denied.'}"
+                                             fetchSize="#{bindings.CompletedTaskVO1.rangeSize}" id="lv2">
+                                    <af:listItem id="li2">
+                                        <af:panelGridLayout id="pgl8">
+                                            <af:gridRow marginTop="5px" height="auto" marginBottom="5px" id="gr2">
+                                                <af:gridCell marginStart="5px" width="50%" id="gc3">
+                                                    <af:panelGroupLayout id="pgl13" layout="horizontal"
+                                                                         inlineStyle="margin-bottom:2px;">
+                                                        <af:outputText value="Task Name: " id="ot1"
+                                                                       inlineStyle="color: #194872;font-size: 12px;font-weight: bold;"/>
+                                                        <af:outputFormatted value="#{item.bindings.Taskname.inputValue}"
+                                                                            id="of12"
+                                                                            inlineStyle="color: #194872;word-wrap: break-word;"/>
+                                                    </af:panelGroupLayout>
+                                                    <af:panelGroupLayout id="pgl9" layout="horizontal">
+                                                        <af:outputText value="Task Status: " id="ot2"
+                                                                       inlineStyle="color: #194872;font-size: 12px;font-weight: bold;"/>
+                                                        <af:outputFormatted value="#{item.bindings.Taskstatus.inputValue}"
+                                                                            id="of13" inlineStyle="color: #194872;"/>
+                                                    </af:panelGroupLayout>
+                                                </af:gridCell>
+                                                <af:gridCell marginStart="5px" width="50%" marginEnd="5px" id="gc4">
+                                                    <af:panelGroupLayout id="pgl14" layout="vertical">
+                                                        <!--<af:outputFormatted value="#{item.bindings.Wfcompletion.inputValue}%"
+                                                                            id="of17"/>-->
+                                                        <af:progressIndicator id="pi1" value="#{WorkflowPcBean}"
+                                                                              styleClass="#{WorkflowPcBean.styleClass}"/>
+                                                    </af:panelGroupLayout>
+                                                </af:gridCell>
+                                            </af:gridRow>
+                                        </af:panelGridLayout>
+                                    </af:listItem>
+                                </af:listView>
+                            </af:panelGroupLayout>
+                            <af:componentDragSource/>
+                        </af:panelBox>
+                        <af:panelBox text="Relative Salaries Department Wise" id="DeptEmployee"
+                                     inlineStyle=" border: 7px solid #6A94B9; overflow: hidden;" showDisclosure="false"
+                                     binding="#{ShowNHideBean.bindDepartmentEmployeesBox}">
+                            <f:facet name="toolbar">
+                                <af:commandNavigationItem id="cni1" icon="/resources/images/maximize.png"
+                                                          shortDesc="Maximise">
+                                    <af:showPopupBehavior popupId="p2"/>
+                                </af:commandNavigationItem>
+                            </f:facet>
+                                 <dvt:treemap summary="highest salary by dept" id="t1" value="#{bindings.DepartmentMastersVO1.treeModel}" var="row"
+                                              inlineStyle="overflow:hidden;">
+                                <af:switcher facetName="#{row.hierTypeBinding.name}" id="s1">
+                                    <f:facet name="DepartmentMastersVO11">
+                                        <dvt:treemapNode value="#{row.Salary}"
+                                                         label="#{row['FirstName']} € #{row['Salary']}" id="tn1">
+                                            <dvt:attributeGroups value="#{row.FirstName}" type="color"
+                                                                 label="#{row.FirstName}" id="ag8"/>
+                                        </dvt:treemapNode>
+                                    </f:facet>
+                                    <f:facet name="DepartmentMastersVO10">
+                                        <dvt:treemapNode value="#{row.AvgSal}" label="#{row.DepartmentName}" id="tn2"/>
+                                    </f:facet>
+                                </af:switcher>
+                            </dvt:treemap>
+                            
+                            <af:componentDragSource/>
+                        </af:panelBox>
+                        <af:panelBox text="Department Locations Across The World" id="DeptLocations"
+                                     inlineStyle=" border: 7px solid #6A94B9;" showDisclosure="false"
+                                     binding="#{ShowNHideBean.bindDeptLocationsBox}">
+                            <dvt:map summary="Dept Locations" id="map" startingX="0.0" mapServerConfigId="mapConfig1"
+                                     baseMapName="ELOCATION.WORLD_MAP" mapZoom="0" inlineStyle="overflow: hidden;"
+                                     startingY="0.0" autoZoomThemeId="mt1">
+                                <dvt:mapPointTheme id="mt1" value="#{bindings.DepartVO.geoMapModel}"/>
+                            </dvt:map>
+                            <af:componentDragSource/>
+                        </af:panelBox>
+                        <af:panelBox text="Regions And Departments" id="AttritionHistory" showDisclosure="false"
+                                     binding="#{ShowNHideBean.bindAttritionHistoryBox}"
+                                     inlineStyle=" border: 7px solid #6A94B9;">
+                            <af:panelGridLayout id="pgl16">
+                                <af:gridRow marginTop="5px" height="auto" marginBottom="5px" id="gr3">
+                                    <af:gridCell marginStart="5px" width="15%" id="gc5"/>
+                                    <af:gridCell marginStart="5px" width="70%" id="gc6">
+                                        <af:panelGroupLayout id="pgl15" inlineStyle="overflow:hidden;">
+                                            <dvt:sunburst id="s5" value="#{bindings.DepartmentMastersVO11.collectionModel}" var="row" summary="Employee Count Based on Department">
+                                        <af:switcher facetName="#{row.hierTypeBinding.name}" id="s7">
+                                            <f:facet name="DepartmentMastersVO111">
+                                                <dvt:sunburstNode value="#{row.Salary}" label="#{row.FirstName}"
+                                                                  id="sn1">
+                                                    <dvt:attributeGroups value="#{row.Salary}" type="color"
+                                                                         label="#{row.Salary}" id="ag3"/>
+                                                </dvt:sunburstNode>
+                                            </f:facet>
+                                            <f:facet name="DepartmentMastersVO110">
+                                                <dvt:sunburstNode value="#{row.EmpCount}" label="#{row.DepartmentName}"
+                                                                  id="sn2">
+                                                    <dvt:attributeGroups value="#{row.EmpCount}" type="color"
+                                                                         label="#{row.EmpCount}" id="ag5"/>
+                                                </dvt:sunburstNode>
+                                            </f:facet>
+                                        </af:switcher>
+                                    </dvt:sunburst>
+                                        </af:panelGroupLayout>
+                                    </af:gridCell>
+                                    <af:gridCell marginStart="5px" width="15%" marginEnd="5px" id="gc7"/>
+                                </af:gridRow>
+                            </af:panelGridLayout>
+                            <af:componentDragSource/>
+                            <f:facet name="toolbar">
+                                <af:commandNavigationItem id="cni2" icon="/resources/images/maximize.png"
+                                                          shortDesc="Maximise">
+                                    <af:showPopupBehavior popupId="p3"/>
+                                </af:commandNavigationItem>
+                            </f:facet>
+                        </af:panelBox>
+                    </af:panelDashboard>
+                </f:facet>
+                <f:facet name="second">
+                    <af:panelBorderLayout id="pbl1"
+                                          inlineStyle="background: white; border: 7px solid #6A94B9; margin-left: 7px;">
+                        <dvt:bubbleChart id="bubbleChart1" var="row" value="#{bindings.BubbleGraphVO1.collectionModel}"
+                                         inlineStyle="width: 100%;" hoverBehavior="dim" zoomAndScroll="live"
+                                         dataSelection="single">
+                            <dvt:chartLegend rendered="true" id="cl1">
+                                <dvt:legendSection source="ag1" id="ls1"/>
+                            </dvt:chartLegend>
+                            <f:facet name="dataStamp">
+                                <dvt:chartDataItem id="di1" x="#{row.DepartmentId}" y="#{row.AvgSal}"
+                                                   z="#{row.CountEmp}" group="#{row.DepartmentName}">
+                                    <dvt:attributeGroups label="#{row.DepartmentName}" id="ag1" type="color"
+                                                         value="#{row.DepartmentName}"/>
+                                </dvt:chartDataItem>
+                            </f:facet>
+                            <dvt:chartXAxis id="cxa1" title="Department Id's"/>
+                            <dvt:chartYAxis id="cya1" title="Average Salary per Department"/>
+                        </dvt:bubbleChart>
+                    </af:panelBorderLayout>
+                </f:facet>
+            </af:panelSplitter>
+        </f:facet>
+    </af:panelSplitter>
+</ui:composition>

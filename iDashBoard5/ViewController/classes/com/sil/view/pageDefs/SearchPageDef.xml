@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.0.31" id="SearchPageDef"
+                Package="com.sil.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="EmployeesEO22View2" RangeSize="25" DataControl="iDashBoardAmDataControl"
+              id="EmployeesEO22View2Iterator"/>
+    <searchRegion Criteria="__ImplicitViewCriteria__" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="EmployeesEO22View2Iterator" id="ImplicitViewCriteriaQuery"/>
+    <iterator Binds="SearchVO1" RangeSize="17" DataControl="iDashBoardAmDataControl" id="SearchVO1Iterator"/>
+    <searchRegion Criteria="__ImplicitViewCriteria__" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="SearchVO1Iterator" id="ImplicitViewCriteriaQuery1"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="SearchVO1Iterator" id="SearchVO1">
+      <nodeDefinition DefName="com.silbury.model.evo.SearchVO" Name="SearchVO10">
+        <AttrNames>
+          <Item Value="FirstName"/>
+          <Item Value="LastName"/>
+          <Item Value="Email"/>
+          <Item Value="PhoneNumber"/>
+          <Item Value="HireDate"/>
+          <Item Value="Salary"/>
+          <Item Value="CommissionPct"/>
+          <Item Value="DepartmentName"/>
+          <Item Value="JobTitle"/>
+          <Item Value="ManagerFirstName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>
